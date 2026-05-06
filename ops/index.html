@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ARMOR Mission Webapp</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="stage" aria-label="ARMOR synthetic maritime mission webapp">
+      <canvas id="map" aria-label="Synthetic maritime mission map with bathymetry, tracks, detections, and ARM site markers"></canvas>
+
+      <div class="hud hud-top">
+        <div class="kicker">Synthetic maritime mission workspace</div>
+        <h1>ARMOR</h1>
+        <div class="mission-label">Parametric Spatialism System / San Diego synthesis</div>
+        <div class="coordinate-readout">LAT 32.7157 / LON -117.1611 / GRID PSS-1.0</div>
+      </div>
+
+      <section id="missionGraph" class="mission-graph" aria-label="San Diego mission entity graph">
+        <div class="graph-header">
+          <div>
+            <div class="kicker">Orbital command graph</div>
+            <h2>Entity graph</h2>
+          </div>
+          <span id="graphCount" class="graph-count">16 nodes</span>
+        </div>
+        <svg id="graphSvg" role="img" aria-label="Organizations, technologies, concepts, threats, and metrics connected by mission relationships"></svg>
+      </section>
+
+      <nav class="mode-switch" aria-label="Application mode">
+        <button class="mode-button is-active" type="button" data-mode="observe">Observe</button>
+        <button class="mode-button" type="button" data-mode="model">Model</button>
+        <button class="mode-button" type="button" data-mode="graph">Graph</button>
+      </nav>
+
+      <aside class="layer-panel" aria-label="Map layers">
+        <div class="panel-title">Layers</div>
+        <label><input type="checkbox" data-layer="bathymetry" checked> Bathymetry</label>
+        <label><input type="checkbox" data-layer="tracks" checked> Tracks</label>
+        <label><input type="checkbox" data-layer="detections" checked> Detections</label>
+        <label><input type="checkbox" data-layer="markers" checked> ARM markers</label>
+        <label><input type="checkbox" data-layer="graph" checked> Entity graph</label>
+        <label><input type="checkbox" data-layer="scenario" checked> Scenario</label>
+      </aside>
+
+      <aside class="inspector" aria-label="Selection inspector">
+        <div class="panel-title">Inspector</div>
+        <h2 id="inspectorTitle">Mission overview</h2>
+        <p id="inspectorBody">Observe baseline tracks, inspect mission entities, or model a synthetic small-vessel scenario.</p>
+        <dl id="inspectorMeta" class="meta-list">
+          <div><dt>Mode</dt><dd>Observe</dd></div>
+          <div><dt>Data</dt><dd>Synthetic</dd></div>
+        </dl>
+      </aside>
+
+      <section id="modelPanel" class="model-panel is-hidden" aria-label="Synthetic scenario builder">
+        <div class="panel-title">Scenario builder</div>
+        <div class="model-grid">
+          <label>Drone count <input id="droneCount" type="range" min="2" max="8" step="1" value="4"><span id="droneCountValue">4</span></label>
+          <label>Picket spacing <input id="picketSpacing" type="range" min="8" max="40" step="1" value="18"><span id="picketSpacingValue">18 nm</span></label>
+          <label>Range multiplier <input id="rangeMultiplier" type="range" min="0.8" max="2.4" step="0.1" value="1.6"><span id="rangeMultiplierValue">1.6x</span></label>
+          <label>False-positive rate <input id="falsePositiveRate" type="range" min="2" max="28" step="1" value="10"><span id="falsePositiveRateValue">10%</span></label>
+          <label>Small-vessel density <input id="vesselDensity" type="range" min="10" max="90" step="5" value="45"><span id="vesselDensityValue">45</span></label>
+          <label>Sensor package
+            <select id="sensorPackage">
+              <option value="radar">Radar</option>
+              <option value="eo_ir">Radar + EO/IR</option>
+              <option value="fusion" selected>Fusion</option>
+            </select>
+          </label>
+        </div>
+        <button id="generateScenario" class="primary-action" type="button">Generate Scenario</button>
+        <div id="scenarioMetrics" class="metric-strip" aria-label="Scenario metrics"></div>
+      </section>
+
+      <div class="timeline" aria-label="Animation timeline">
+        <button id="playPause" type="button" aria-label="Pause animation">Pause</button>
+        <button id="restart" type="button" aria-label="Restart animation">Restart</button>
+        <button id="speed" type="button" aria-label="Change animation speed">1x</button>
+        <input id="timeScrubber" type="range" min="0" max="28" step="0.1" value="0" aria-label="Mission animation time">
+        <output id="timeReadout" for="timeScrubber">00.0s</output>
+      </div>
+    </main>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

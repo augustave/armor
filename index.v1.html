@@ -32,6 +32,7 @@
       <nav class="nav-links" aria-label="Page sections">
         <a href="#mission">Mission</a>
         <a href="#system">System</a>
+        <a href="#ops">Ops</a>
         <a href="#fleet">Fleet</a>
         <a href="#contact">Brief</a>
       </nav>
@@ -187,6 +188,51 @@
               route, status, and tasking discipline.
             </p>
           </article>
+        </div>
+      </section>
+
+      <section class="ops-section scan-section" id="ops" aria-labelledby="ops-title">
+        <div class="section-hud" aria-hidden="true">
+          <span>SOFTWARE LAYER</span>
+          <span>SD-2014 / 28s LOOP</span>
+        </div>
+        <div class="section-kicker">Mission Layer</div>
+        <h2 id="ops-title">The software the hull carries.</h2>
+        <p class="ops-intro">
+          Bathymetry, sensor tracks, detections, and ARM-site markers, rendered
+          as a single operational picture. Drive the simulation below or step
+          through the captured moments.
+        </p>
+
+        <div class="ops-strip" aria-label="Mission layer stills">
+          <figure class="ops-frame reveal">
+            <img src="AR01-OPS/sd-2014-t0_9.png" alt="Mission layer at T+00:00.9 — ARM-2B site reveal" loading="lazy" />
+            <figcaption><span>T+00:00.9</span> ARM-2B reveal</figcaption>
+          </figure>
+          <figure class="ops-frame reveal">
+            <img src="AR01-OPS/sd-2014-t3_8.png" alt="Mission layer at T+00:03.8 — three-site picket formation" loading="lazy" />
+            <figcaption><span>T+00:03.8</span> 3-site picket</figcaption>
+          </figure>
+          <figure class="ops-frame reveal">
+            <img src="AR01-OPS/sd-2014-t7_4.png" alt="Mission layer at T+00:07.4 — full constellation lit" loading="lazy" />
+            <figcaption><span>T+00:07.4</span> Full constellation</figcaption>
+          </figure>
+          <figure class="ops-frame reveal">
+            <img src="AR01-OPS/sd-2014-t14.png" alt="Mission layer at T+00:14 — mid-loop calm" loading="lazy" />
+            <figcaption><span>T+00:14.0</span> Mid-loop</figcaption>
+          </figure>
+        </div>
+
+        <div class="ops-embed reveal">
+          <div class="ops-embed-hud" aria-hidden="true">
+            <span>Live mission webapp</span>
+            <a href="ops/index.html" target="_blank" rel="noopener">Open fullscreen ↗</a>
+          </div>
+          <iframe
+            src="ops/index.html"
+            title="ARMOR Mission Webapp — interactive simulation"
+            loading="lazy"
+          ></iframe>
         </div>
       </section>
 

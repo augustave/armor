@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ARMOR | Maritime Defense UAV</title>
+    <meta
+      name="description"
+      content="ARMOR is a maritime defense UAV concept for persistent littoral surveillance, autonomous patrol, and coordinated fleet response."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.v1.css" />
+  </head>
+  <body>
+    <svg class="filter-bank" aria-hidden="true" focusable="false">
+      <filter id="hud-distort" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.018 0.72" numOctaves="2" seed="11" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.9" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </svg>
+
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="brand-lockup" href="#top" aria-label="ARMOR home">
+        <span class="brand-mark"></span>
+        <span>ARMOR</span>
+      </a>
+      <nav class="nav-links" aria-label="Page sections">
+        <a href="#mission">Mission</a>
+        <a href="#system">System</a>
+        <a href="#fleet">Fleet</a>
+        <a href="#contact">Brief</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero scan-zone" aria-labelledby="hero-title" data-scan-zone="SCAN/AR-01">
+        <img
+          class="hero-image"
+          src="AR01-IMG/Frame%201272638038.png"
+          alt="ARMOR autonomous maritime vessel cutting across rough coastal water"
+        />
+        <div class="hero-scrim"></div>
+        <div class="hero-fog" aria-hidden="true"></div>
+        <div class="hud-layer hero-hud" aria-hidden="true">
+          <div class="hud-grid"></div>
+          <div class="scan-band"></div>
+          <div class="scan-reticle">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="sensor-spine">
+            <i style="--node: 0"></i>
+            <i style="--node: 1"></i>
+            <i style="--node: 2"></i>
+            <i style="--node: 3"></i>
+            <i style="--node: 4"></i>
+          </div>
+          <div class="classification">
+            <span>Classified vessel anatomy</span>
+            <span>Scan/AR-01</span>
+          </div>
+          <div class="focus-readout">
+            <span>Macro focus plane</span>
+            <strong>Hull / mast / wake</strong>
+          </div>
+        </div>
+        <div class="hero-content reveal is-visible">
+          <p class="eyebrow">Scan/AR-01</p>
+          <h1 id="hero-title">ARMOR</h1>
+          <p class="hero-copy">
+            Classified autonomous vessel anatomy: hull, mast, sensor channels,
+            and fleet telemetry rendered as a forensic maritime scan.
+          </p>
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button primary" href="#mission">View Anatomy</a>
+            <a class="button secondary" href="#contact">Request Brief</a>
+          </div>
+        </div>
+        <div class="hero-telemetry" aria-hidden="true">
+          <div>
+            <span>Biometric proxy</span>
+            <strong>Vessel spine nominal</strong>
+          </div>
+          <div>
+            <span>Signal depth</span>
+            <strong>04.72 / coastal fog</strong>
+          </div>
+          <div>
+            <span>Authorization</span>
+            <strong>Black channel active</strong>
+          </div>
+        </div>
+        <div class="hero-status" aria-label="System status">
+          <span><strong>01</strong> Autonomous patrol</span>
+          <span><strong>02</strong> Littoral surveillance</span>
+          <span><strong>03</strong> Fleet coordination</span>
+        </div>
+      </section>
+
+      <section class="mission-band scan-section" id="mission" aria-labelledby="mission-title">
+        <div class="section-hud" aria-hidden="true">
+          <span>SCAN DEPTH 023M</span>
+          <span>HULL ANATOMY</span>
+        </div>
+        <div class="section-kicker">Hull Anatomy</div>
+        <h2 id="mission-title">
+          Persistent maritime presence without expanding crew exposure.
+        </h2>
+        <p>
+          ARMOR turns patrol, reconnaissance, and screening work into a
+          distributed autonomous layer that can hold water, relay awareness, and
+          move as a coordinated surface fleet.
+        </p>
+      </section>
+
+      <section class="split-section scan-section" aria-labelledby="deployment-title">
+        <div class="split-copy reveal">
+          <p class="eyebrow dark">Sensor Spine</p>
+          <h2 id="deployment-title">Designed for handoff from shore, cutter, or expeditionary deck.</h2>
+          <p>
+            The platform concept emphasizes fast deployment, route discipline,
+            and command oversight across constrained maritime approaches.
+          </p>
+          <dl class="metric-list">
+            <div>
+              <dt>Role</dt>
+              <dd>Watch, screen, relay</dd>
+            </div>
+            <div>
+              <dt>Mode</dt>
+              <dd>Single craft or mesh fleet</dd>
+            </div>
+            <div>
+              <dt>Focus</dt>
+              <dd>Low-signature maritime coverage</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="split-media parallax-frame scan-panel" data-panel-label="TRANSFER/12F">
+          <img
+            src="AR01-IMG/ZC1.jpg"
+            alt="Composite maritime operation image with unmanned craft, map overlay, and launch vessel"
+          />
+          <div class="panel-hud" aria-hidden="true">
+            <span>Sensor spine alignment</span>
+            <span>Route package accepted</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="system-section scan-section" id="system" aria-labelledby="system-title">
+        <div class="section-hud" aria-hidden="true">
+          <span>VECTOR OVERLAY</span>
+          <span>MESH COHERENCE 91%</span>
+        </div>
+        <div class="section-kicker">Vector Overlay</div>
+        <h2 id="system-title">A fleet layer for contested water.</h2>
+        <div class="capability-grid">
+          <article class="capability reveal">
+            <span class="capability-index">01</span>
+            <h3>Patrol</h3>
+            <p>
+              Hold assigned lanes and surface contacts while keeping operators
+              outside the first line of exposure.
+            </p>
+          </article>
+          <article class="capability reveal">
+            <span class="capability-index">02</span>
+            <h3>Sense</h3>
+            <p>
+              Extend visual and electronic watch over harbor mouths, island
+              chains, and gray-zone approaches.
+            </p>
+          </article>
+          <article class="capability reveal">
+            <span class="capability-index">03</span>
+            <h3>Coordinate</h3>
+            <p>
+              Operate as independent craft or as a synchronized group with
+              route, status, and tasking discipline.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="image-run" aria-label="ARMOR visual mission sequence">
+        <figure class="run-panel scan-panel" data-panel-label="FLEET MESH">
+          <img
+            src="AR01-IMG/Frame%201272638035.png"
+            alt="Three autonomous maritime craft crossing open water in formation"
+          />
+          <figcaption>Formation patrol across open water.</figcaption>
+        </figure>
+        <figure class="run-panel scan-panel" data-panel-label="MAST SCAN">
+          <img
+            src="AR01-IMG/Frame%201272638036.png"
+            alt="Side profile of an autonomous maritime defense vessel with Coast Guard markings"
+          />
+          <figcaption>Persistent sensor mast and low-profile hull geometry.</figcaption>
+        </figure>
+      </section>
+
+      <section class="fleet-section scan-section" id="fleet" aria-labelledby="fleet-title">
+        <div class="fleet-copy reveal">
+          <p class="eyebrow dark">Fleet Mesh</p>
+          <h2 id="fleet-title">Built to scale from a single watch point to a distributed patrol line.</h2>
+        </div>
+        <div class="fleet-strip" aria-label="Fleet imagery">
+          <figure class="scan-panel" data-panel-label="MESH/A1">
+            <img
+              src="AR01-IMG/Frame%201272638037.png"
+              alt="Three low-profile autonomous maritime vessels navigating heavy water"
+            />
+            <figcaption>Low-signature craft moving as a coordinated group.</figcaption>
+          </figure>
+          <figure class="scan-panel" data-panel-label="PAYLOAD/B7">
+            <img
+              src="AR01-IMG/Frame%201272638044.png"
+              alt="Two Coast Guard marked autonomous vessels operating in rough sea"
+            />
+            <figcaption>Service-specific payloads and mission markings.</figcaption>
+          </figure>
+          <figure class="scan-panel" data-panel-label="WAKE/C9">
+            <img
+              src="AR01-IMG/Frame%201272638046.png"
+              alt="Autonomous Navy marked maritime vessel cresting over rough water"
+            />
+            <figcaption>Heavy-water endurance for forward patrol zones.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="closing scan-zone" id="contact" aria-labelledby="contact-title" data-scan-zone="BRIEFING LOCK">
+        <div class="closing-image" aria-hidden="true">
+          <img src="AR01-IMG/Frame%201272638046.png" alt="" />
+        </div>
+        <div class="closing-hud" aria-hidden="true">
+          <div class="scan-band"></div>
+          <span>Briefing lock</span>
+          <span>authorization required</span>
+        </div>
+        <div class="closing-content reveal">
+          <p class="eyebrow">Briefing Lock</p>
+          <h2 id="contact-title">Deploy the autonomous layer before the threat reaches the harbor.</h2>
+          <p>
+            Request a mission profile, autonomy stack overview, or fleet
+            integration brief for coastal defense planning.
+          </p>
+          <a class="button primary light" href="mailto:briefing@armor-uav.example">Request Brief</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" aria-label="Site footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <div>
+            <strong>ARMOR</strong>
+            <span>Maritime Defense UAV / Concept</span>
+          </div>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="#mission">Mission</a>
+          <a href="#system">System</a>
+          <a href="#fleet">Fleet</a>
+          <a href="#contact">Brief</a>
+        </nav>
+        <div class="footer-meta">
+          <span>Scan/AR-01</span>
+          <span>Black channel active</span>
+          <a href="mailto:briefing@armor-uav.example">briefing@armor-uav.example</a>
+        </div>
+      </div>
+      <div class="footer-base">
+        <span>&copy; 2026 ARMOR Program</span>
+        <span>Classified vessel anatomy &mdash; concept study</span>
+      </div>
+    </footer>
+
+    <script src="script.v1.js"></script>
+  </body>
+</html>

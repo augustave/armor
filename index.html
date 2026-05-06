@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ARMOR | Recovered Maritime Schematic</title>
+    <meta
+      name="description"
+      content="ARMOR maritime defense UAV schematic interface rendered as a recovered analog blueprint."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Sans+Condensed:ital,wght@1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <svg class="filter-bank" aria-hidden="true" focusable="false">
+      <filter id="chalk-edge" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.84" numOctaves="2" seed="17" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.7" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </svg>
+
+    <div class="archive-shell" data-zoom="1">
+      <header class="registry" aria-label="ARMOR registry">
+        <a class="registry-title" href="#origin" data-pan-target="origin">
+          <span class="node-sigil"></span>
+          <span>ARMOR/AR-01</span>
+        </a>
+        <nav class="registry-nav" aria-label="Schematic navigation">
+          <button class="nav-node is-active" type="button" data-pan-target="origin">00</button>
+          <button class="nav-node" type="button" data-pan-target="sector">36A</button>
+          <button class="nav-node" type="button" data-pan-target="swarm">S-04</button>
+          <button class="nav-node" type="button" data-pan-target="qa">Q-17</button>
+          <button class="nav-node warning" type="button" data-pan-target="exit">X-9</button>
+        </nav>
+      </header>
+
+      <aside class="legend-panel" aria-label="Schematic key">
+        <h2>KEY/AR-01</h2>
+        <ol>
+          <li><span class="key-stroke solid"></span> powered corridor</li>
+          <li><span class="key-stroke dotted"></span> boundary condition</li>
+          <li><span class="key-block"></span> active inventory node</li>
+          <li><span class="key-block alert"></span> terminal warning</li>
+        </ol>
+      </aside>
+
+      <aside class="zoom-panel" aria-label="Magnification controls">
+        <button type="button" data-zoom="0.5">50</button>
+        <button class="is-active" type="button" data-zoom="1">100</button>
+        <button type="button" data-zoom="2">200</button>
+      </aside>
+
+      <main class="schematic-viewport" aria-label="Drag to pan ARMOR schematic">
+        <section class="schematic-world" id="schematicWorld" aria-label="Recovered ARMOR blueprint">
+          <div class="axis axis-x"></div>
+          <div class="axis axis-y"></div>
+
+          <div class="corridor h c-origin c-sector" style="--x: 224px; --y: 332px; --w: 662px"></div>
+          <div class="corridor v c-sector c-swarm" style="--x: 886px; --y: 332px; --h: 336px"></div>
+          <div class="corridor h c-swarm c-qa" style="--x: 886px; --y: 668px; --w: 680px"></div>
+          <div class="corridor v c-qa c-exit" style="--x: 1566px; --y: 252px; --h: 416px"></div>
+          <div class="corridor h c-origin c-deploy" style="--x: 224px; --y: 518px; --w: 346px"></div>
+          <div class="corridor v c-deploy c-swarm" style="--x: 570px; --y: 518px; --h: 472px"></div>
+          <div class="corridor h c-deploy c-swarm" style="--x: 570px; --y: 990px; --w: 486px"></div>
+          <div class="corridor h dotted c-sector" style="--x: 886px; --y: 214px; --w: 392px"></div>
+          <div class="corridor v dotted c-qa" style="--x: 1742px; --y: 668px; --h: 264px"></div>
+          <div class="corridor h c-exit" style="--x: 1566px; --y: 252px; --w: 416px"></div>
+
+          <article class="cluster cluster-origin" id="origin" style="--x: 96px; --y: 152px" data-cluster="origin">
+            <p class="cluster-code">00 / ORIGIN FILE</p>
+            <h1>ARMOR</h1>
+            <p class="lore">
+              maritime defense uav // coastal inventory machine // operator presence removed from initial contact.
+            </p>
+            <button class="node large is-active" type="button" data-pan-target="sector">
+              36A<br />OPEN SECTOR
+            </button>
+          </article>
+
+          <article class="cluster cluster-sector" id="sector" style="--x: 936px; --y: 128px" data-cluster="sector">
+            <p class="cluster-code">36A / LITTORAL HOLD</p>
+            <h2>SECTOR 4</h2>
+            <p class="lore">
+              watch line stretches until crew count reads as zero. hostile water remains catalogued.
+            </p>
+            <figure class="bitmap-panel panel-wide">
+              <img
+                src="AR01-IMG/Frame%201272638035.png"
+                alt="ARMOR vessels in formation"
+              />
+              <figcaption>IMG/36A-FORMATION</figcaption>
+            </figure>
+          </article>
+
+          <article class="cluster cluster-deploy" style="--x: 210px; --y: 706px" data-cluster="deploy">
+            <p class="cluster-code">12F / LAUNCH INDEX</p>
+            <h2>DECK HANDOFF</h2>
+            <p class="lore">
+              ship mouth opens. route package transfers. surface unit accepts the black water.
+            </p>
+            <figure class="bitmap-panel panel-tall">
+              <img
+                src="AR01-IMG/ZC1.jpg"
+                alt="Maritime launch and map overlay"
+              />
+              <figcaption>IMG/12F-TRANSFER</figcaption>
+            </figure>
+          </article>
+
+          <article class="cluster cluster-swarm" id="swarm" style="--x: 1076px; --y: 724px" data-cluster="swarm">
+            <p class="cluster-code">S-04 / DISTRIBUTED BODY</p>
+            <h2>THREE-POINT MESH</h2>
+            <div class="node-stack" aria-label="Swarm nodes">
+              <button class="node" type="button" data-pan-target="origin">A1 PATROL</button>
+              <button class="node" type="button" data-pan-target="qa">B7 SENSE</button>
+              <button class="node" type="button" data-pan-target="exit">C9 RELAY</button>
+            </div>
+            <figure class="bitmap-panel panel-wide">
+              <img
+                src="AR01-IMG/Frame%201272638037.png"
+                alt="Low-profile ARMOR vessels at sea"
+              />
+              <figcaption>IMG/S-04-GROUP</figcaption>
+            </figure>
+          </article>
+
+          <article class="cluster cluster-qa" id="qa" style="--x: 1604px; --y: 608px" data-cluster="qa">
+            <p class="cluster-code">Q-17 / QUALITY ASSURANCE</p>
+            <h2>WAVE TRIAL</h2>
+            <p class="lore">
+              hull remains accounted for after impact sequence. mast reports. corridor remains open.
+            </p>
+            <div class="inspection-grid">
+              <figure class="bitmap-panel">
+                <img
+                  src="AR01-IMG/Frame%201272638036.png"
+                  alt="Side profile of ARMOR platform"
+                />
+                <figcaption>Q17-A</figcaption>
+              </figure>
+              <figure class="bitmap-panel">
+                <img
+                  src="AR01-IMG/Frame%201272638044.png"
+                  alt="Dual vessel maritime test"
+                />
+                <figcaption>Q17-B</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="cluster cluster-exit" id="exit" style="--x: 2026px; --y: 124px" data-cluster="exit">
+            <p class="cluster-code alert">X-9 / TERMINAL WARNING</p>
+            <h2>REQUEST BRIEF</h2>
+            <p class="lore">
+              authorization required before sortie geometry leaves the archive.
+            </p>
+            <a class="node warning request-node" href="mailto:briefing@armor-uav.example">
+              ACTUATE<br />X-9
+            </a>
+            <figure class="bitmap-panel panel-wide">
+              <img
+                src="AR01-IMG/Frame%201272638046.png"
+                alt="ARMOR maritime vessel in heavy seas"
+              />
+              <figcaption>IMG/X9-SEA-FAILURE</figcaption>
+            </figure>
+          </article>
+
+          <p class="annotation a1">ghost channel // no public traffic</p>
+          <p class="annotation a2">human crew inventory held outside contact zone</p>
+          <p class="annotation a3">all bends registered at ninety degrees</p>
+        </section>
+      </main>
+
+      <footer class="registry-footer" aria-label="Archive status">
+        <span>RECOVERED PRINT / NO REVISION CERTIFIED</span>
+        <span>NO DIAGONAL PRIMARY CORRIDORS</span>
+        <span>AR-01 // MARITIME DEFENSE UAV</span>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

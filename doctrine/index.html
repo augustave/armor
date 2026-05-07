@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ARMOR Doctrine — Concept-Stage Employment Doctrine</title>
+    <meta
+      name="description"
+      content="ARMOR concept-stage employment doctrine: authorities posture, operating modes, rules of engagement, and command relationships for autonomous maritime defense vessels."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="./doctrine.css" />
+  </head>
+  <body class="doctrine-body">
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="brand-lockup" href="../index.html#top" aria-label="ARMOR home">
+        <span class="brand-mark"></span>
+        <span>ARMOR</span>
+      </a>
+      <nav class="nav-links" aria-label="Page sections">
+        <a href="../index.html#mission">Mission</a>
+        <a href="../index.html#platforms">Platforms</a>
+        <a href="../index.html#ops">Ops</a>
+        <a href="../index.html#program">Program</a>
+        <a href="./" aria-current="page">Doctrine</a>
+        <a href="../index.html#contact">Brief</a>
+      </nav>
+    </header>
+
+    <main class="doctrine-shell">
+      <header class="doctrine-hero">
+        <p class="eyebrow">Concept-Stage Doctrine · v0.1</p>
+        <h1>ARMOR Employment Doctrine</h1>
+        <p class="doctrine-deck">
+          How ARMOR is intended to be employed in coastal and littoral defense.
+          Authorities posture, operating modes, command relationships, and rules
+          of engagement. This document is the public, concept-stage doctrine —
+          to be replaced by sponsor-issued doctrine on entry to a program of record.
+        </p>
+        <div class="doctrine-meta">
+          <span>UNCLASSIFIED // FOR PUBLIC RELEASE</span>
+          <span>Version 0.1 · Concept</span>
+          <span>Reviewed: 2026-05-06</span>
+        </div>
+      </header>
+
+      <aside class="doctrine-toc" aria-label="Doctrine contents">
+        <p class="toc-label">Contents</p>
+        <ol>
+          <li><a href="#preamble">0 · Preamble</a></li>
+          <li><a href="#purpose">1 · Purpose</a></li>
+          <li><a href="#authorities">2 · Authorities and Posture</a></li>
+          <li><a href="#employment">3 · Concept of Employment</a></li>
+          <li><a href="#modes">4 · Operating Modes</a></li>
+          <li><a href="#command">5 · Command Relationships</a></li>
+          <li><a href="#roe">6 · Rules of Engagement</a></li>
+          <li><a href="#workflow">7 · Operator Workflow</a></li>
+          <li><a href="#override">8 · Risk Tolerance &amp; Override</a></li>
+          <li><a href="#theaters">9 · Theater Variants</a></li>
+          <li><a href="#sustainment">10 · Sustainment Doctrine</a></li>
+          <li><a href="#questions">11 · Open Doctrine Questions</a></li>
+          <li><a href="#glossary">12 · Glossary</a></li>
+        </ol>
+      </aside>
+
+      <article class="doctrine-doc">
+        <section id="preamble" class="doc-section">
+          <h2>0 · Preamble</h2>
+          <p>
+            This is concept-stage doctrine. It is written so that a watch
+            officer, a sector tasking authority, a program sponsor, and a
+            qualification reviewer can read the <em>same</em> document and reach
+            the same conclusion about how ARMOR is employed.
+          </p>
+          <p>
+            It is <strong>not</strong> sponsor-issued doctrine. It is not a
+            CONOPS approved by any service. It carries no authority of its own.
+            Its purpose is to make the ARMOR concept's operating intent
+            <em>legible and reviewable</em> before formal doctrine is written.
+          </p>
+          <p class="callout">
+            <strong>Hard rule.</strong> Where this doctrine and a sponsor's
+            issued doctrine disagree, the sponsor's doctrine governs. ARMOR
+            adapts. This document changes.
+          </p>
+        </section>
+
+        <section id="purpose" class="doc-section">
+          <h2>1 · Purpose</h2>
+          <p>
+            ARMOR exists to extend continuous maritime awareness across coastal
+            and littoral approaches that crewed assets cannot continuously
+            cover. The purpose of <em>this</em> doctrine is to bound how that
+            awareness is generated, who acts on it, and where the human-in-the-
+            loop sits.
+          </p>
+          <h3>1.1 Mission outcomes</h3>
+          <ol>
+            <li><strong>Coverage.</strong> A continuous calibrated picture of small-vessel traffic across named approaches.</li>
+            <li><strong>Vectoring.</strong> Calibrated alerts that let crewed responders sortie when sortie is warranted, not on heuristic.</li>
+            <li><strong>Pattern.</strong> A queryable record of small-vessel behavior over the box, usable for retrospective analysis and adversary-COA discovery.</li>
+          </ol>
+          <h3>1.2 What ARMOR is not</h3>
+          <ul>
+            <li>Not a kinetic effects platform.</li>
+            <li>Not a tasking authority.</li>
+            <li>Not a sub-surface or anti-submarine platform.</li>
+            <li>Not a blue-water deployment at concept stage.</li>
+          </ul>
+        </section>
+
+        <section id="authorities" class="doc-section">
+          <h2>2 · Authorities and Posture</h2>
+          <p>
+            The single most important doctrinal commitment in ARMOR is the
+            authorities posture. It is the sentence on which the entire concept
+            stands or falls.
+          </p>
+          <p class="callout">
+            <strong>Authorities posture.</strong> ARMOR observes. ARMOR
+            classifies. ARMOR alerts. <em>Humans task and act.</em> ARMOR will
+            not engage targets, will not direct other assets, and will not
+            execute irreversible actions against the world without an
+            in-the-loop human authorization.
+          </p>
+          <h3>2.1 What ARMOR may decide unattended</h3>
+          <ul>
+            <li>Detection threshold crossing on its own sensors.</li>
+            <li>Track association across its own sensor sources.</li>
+            <li>Classification confidence assignment, with calibration.</li>
+            <li>Alert dispatch (subject to calibration at the mission C2 tier).</li>
+            <li>Station-keeping deviation within a pre-tasked geofence.</li>
+            <li>Pre-tasked recovery navigation under comms denial.</li>
+          </ul>
+          <h3>2.2 What ARMOR may not decide</h3>
+          <ul>
+            <li>Vectoring of any responding asset.</li>
+            <li>Engagement, interaction, or contact with any tracked vessel.</li>
+            <li>Movement outside a pre-authorized geofence except on a pre-tasked recovery path.</li>
+            <li>Any action that is irreversible, kinetic, or politically consequential.</li>
+            <li>Self-destruct, scuttle, or capture-deny actions (sponsor-tier decision only).</li>
+          </ul>
+          <p>
+            This authorities posture is a hard concept commitment. Relaxing it
+            is not a tuning parameter; it is a different program with a different
+            qualification path and a different customer story.
+          </p>
+        </section>
+
+        <section id="employment" class="doc-section">
+          <h2>3 · Concept of Employment</h2>
+          <h3>3.1 Standard employment — Continuous Picket</h3>
+          <p>
+            A picket of four ARMOR platforms is positioned along a named
+            approach lane, spaced approximately 18 nm apart, with sensor
+            coverage overlapping at a designed redundancy. Each platform runs
+            radar, EO/IR, and a behavior classifier. Detections are fused
+            on-platform; calibrated alerts are dispatched to the sector watch
+            floor.
+          </p>
+          <h3>3.2 Tasking</h3>
+          <p>
+            Each picket assignment carries a <em>tasking package</em> issued by
+            the sector tasking authority. The tasking package specifies:
+          </p>
+          <ul>
+            <li>The geofence within which platforms station-keep.</li>
+            <li>Priority lanes and contact-of-interest behavioral profiles.</li>
+            <li>Alert-suppression hours (e.g., known-friendly traffic windows).</li>
+            <li>Escalation thresholds for multi-platform alerts.</li>
+            <li>Recovery posture under comms denial or platform loss.</li>
+          </ul>
+          <h3>3.3 Hand-off</h3>
+          <p>
+            A track surfaced by ARMOR is <em>handed off</em> to a responding
+            asset (cutter, aviation, harbor patrol, partner) via the watch
+            officer's tasking flow. ARMOR maintains the track until handoff is
+            confirmed. ARMOR does not pursue the track outside the geofence on
+            its own initiative.
+          </p>
+        </section>
+
+        <section id="modes" class="doc-section">
+          <h2>4 · Operating Modes</h2>
+          <p>
+            Each platform operates in one of four well-defined modes,
+            determined by comms duty cycle and pre-tasked posture. Mode
+            transitions are observable on the watch floor at all times.
+          </p>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Mode</th>
+                <th>Trigger</th>
+                <th>Behavior</th>
+                <th>Operator visibility</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Linked</strong></td>
+                <td>Comms LOS or SATCOM continuously closing</td>
+                <td>Real-time alert flow; mission C2 in-loop continuously.</td>
+                <td>Live</td>
+              </tr>
+              <tr>
+                <td><strong>Coasting</strong></td>
+                <td>Comms intermittent (≤ 60% duty cycle)</td>
+                <td>Local autonomy; alerts buffered with timestamps; flush on link recovery.</td>
+                <td>Stale-but-buffered indicator on platform icon</td>
+              </tr>
+              <tr>
+                <td><strong>Denied</strong></td>
+                <td>Comms &lt; 25% duty cycle for &gt; 30 s</td>
+                <td>Pre-tasked station-keeping or recovery; full local classification; no alert dispatch.</td>
+                <td>Denied indicator; last-link-time displayed</td>
+              </tr>
+              <tr>
+                <td><strong>Recovery</strong></td>
+                <td>Pre-mission tasking instructs return</td>
+                <td>Predetermined return-to-host navigation without prompt.</td>
+                <td>Recovery course displayed</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            ARMOR will not transition modes silently. Every transition is
+            logged, audited, and surfaced on the watch floor. Operators may
+            forcibly recover a platform from any mode subject to comms.
+          </p>
+        </section>
+
+        <section id="command" class="doc-section">
+          <h2>5 · Command Relationships</h2>
+          <h3>5.1 Three tiers</h3>
+          <ol>
+            <li><strong>Platform tier.</strong> The ARMOR platform itself: sensor → fusion → classifier → autonomy → buffer.</li>
+            <li><strong>Mission C2 tier.</strong> Cross-platform track management, calibration, pattern-of-life store, audit. Sector-shore-resident or cutter-resident.</li>
+            <li><strong>Watch tier.</strong> The sector watch floor. The human in the loop. The decision authority.</li>
+          </ol>
+          <h3>5.2 Authority flow</h3>
+          <p>
+            Authority flows <em>down</em> from the sector tasking authority
+            through the watch tier to the mission C2 tier and into the
+            platform tier as a tasking package. Information flows <em>up</em>
+            from the platform tier through the mission C2 tier to the watch
+            tier as calibrated alerts and pattern-of-life writes.
+          </p>
+          <h3>5.3 The override path</h3>
+          <p>
+            At every tier, an override path is present and is one click. The
+            watch officer may suppress an alert, mark a track as false, or
+            escalate a track to higher command. The mission C2 tier may
+            redistribute coverage on platform loss. The platform tier may
+            enter Recovery on its own without authorization.
+          </p>
+        </section>
+
+        <section id="roe" class="doc-section">
+          <h2>6 · Rules of Engagement</h2>
+          <p class="callout">
+            <strong>ARMOR has no rules of engagement.</strong> ARMOR does not
+            engage. The rules of engagement that govern responding assets
+            (cutters, aviation, partners) are out of scope of this doctrine.
+          </p>
+          <p>
+            What ARMOR has, instead, are <em>rules of alerting.</em> These are
+            the disciplines that bound when ARMOR may surface an alert to a
+            human, and what an alert may contain.
+          </p>
+          <h3>6.1 Calibration discipline</h3>
+          <ul>
+            <li>An alert shall not be dispatched at a confidence below the calibrated alert threshold.</li>
+            <li>An alert shall present its confidence as a band, not a single number.</li>
+            <li>An alert shall include a behavior summary, not raw sensor data.</li>
+            <li>An alert shall include the platform identity and the time-on-track.</li>
+          </ul>
+          <h3>6.2 Non-overclaim discipline</h3>
+          <ul>
+            <li>Where a track is below alert threshold but anomalous (e.g., suspected mimicry), the track is logged to pattern-of-life with a flag, but no live alert is dispatched.</li>
+            <li>The watch officer is never told that a track is illicit; the watch officer is told the classifier's confidence that it matches an illicit pattern.</li>
+            <li>ARMOR shall never present an uncalibrated probability as if it were truth.</li>
+          </ul>
+          <h3>6.3 Coexistence discipline</h3>
+          <ul>
+            <li>ARMOR observes COLREGS at all times in U.S. coastal water and partner-equivalent rules in allied theaters.</li>
+            <li>ARMOR does not interfere with civil maritime traffic.</li>
+            <li>ARMOR does not enter restricted areas without authorities-cleared geofence inclusion.</li>
+          </ul>
+        </section>
+
+        <section id="workflow" class="doc-section">
+          <h2>7 · Operator Workflow</h2>
+          <h3>7.1 The watch-officer cycle</h3>
+          <ol>
+            <li>Calibrated alert appears on the watch floor: confidence band, position, behavior summary, last-seen, suggested action.</li>
+            <li>Watch officer triages the alert: <em>Mark False</em>, <em>Suppress 1 hr</em>, <em>Escalate</em>, or <em>Open track</em>.</li>
+            <li>If actionable, watch officer vectors a responder via the existing sector tasking flow.</li>
+            <li>ARMOR maintains the track until handoff is confirmed by the responder.</li>
+            <li>The watch officer's action is logged; the audit trail is queryable by the chain of command.</li>
+          </ol>
+          <h3>7.2 The analyst cycle</h3>
+          <p>
+            A separate, latency-tolerant query surface is available to the
+            sector intelligence analyst. The analyst queries pattern-of-life by
+            lane, time, classification, behavior, or platform. ARMOR's
+            classifier disagreements with operator overrides are surfaced for
+            retrospective review.
+          </p>
+          <h3>7.3 Burden parity</h3>
+          <p class="callout">
+            <strong>Burden parity is a hard floor.</strong> The watch officer's
+            cognitive load with ARMOR fielded shall be <em>less than or equal
+            to</em> today's load. If burden testing fails, the concept fails.
+          </p>
+        </section>
+
+        <section id="override" class="doc-section">
+          <h2>8 · Risk Tolerance and Override</h2>
+          <h3>8.1 Loss tolerance</h3>
+          <p>
+            The picket is designed to survive the loss of a single ARM-site
+            platform per fielded year without mission failure. Coverage
+            degrades to ~75% on single loss; mission C2 redistributes coverage
+            across surviving platforms.
+          </p>
+          <h3>8.2 Cyber posture</h3>
+          <p>
+            ARMOR rejects unauthenticated commands cryptographically.
+            Cyber-incident events are audited and surfaced to the watch floor.
+            ARMOR does not have an autonomous cyber-counter posture.
+          </p>
+          <h3>8.3 Capture and tamper</h3>
+          <p>
+            At concept stage, ARMOR has no platform-resident anti-tamper or
+            self-deny posture. Capture-risk decisions are made at the sponsor
+            tier. Disposition under capture is a sponsor-issued doctrine item.
+          </p>
+          <h3>8.4 Sea state and weather</h3>
+          <p>
+            Pre-mission weather hold removes platforms from station ahead of
+            envelope-exceeding sea states. Recovery posture engages on
+            forecast violation, not on observed violation, where available.
+          </p>
+        </section>
+
+        <section id="theaters" class="doc-section">
+          <h2>9 · Theater Variants</h2>
+          <h3>9.1 Domestic — USCG primary</h3>
+          <p>
+            Authorities under Title 14 USC. Tasking integration with USCG
+            District watch floors. COLREGS-compliant operation. No Title 10
+            authorities required. Concept-stage primary fielding theater.
+          </p>
+          <h3>9.2 USN variant</h3>
+          <p>
+            Authorities under theater-specific OPLAN. Tasking integration with
+            USN OTC. Adds optional acoustic / passive-RF sensor kit. May
+            handle classified contact data; classification handling specified
+            by sponsor.
+          </p>
+          <h3>9.3 Allied / partner variant</h3>
+          <p>
+            Authorities under partner-issued doctrine. Release-controlled
+            classifier baseline. Partner-comms compatibility (NATO STANAG or
+            theater-specific). Export-controlled subset of fusion algorithms.
+            Deployed under partner force commander.
+          </p>
+          <h3>9.4 Sequencing</h3>
+          <p>
+            Variants are sequenced, not parallel: USCG primary, USN second,
+            Allied / partner third. Each variant's deployment is gated on the
+            preceding variant's qualification readiness.
+          </p>
+        </section>
+
+        <section id="sustainment" class="doc-section">
+          <h2>10 · Sustainment Doctrine</h2>
+          <h3>10.1 Launch and recovery</h3>
+          <p>
+            Primary launch from a sector-resident shore facility. Forward
+            launch from a cutter is concept-acceptable where authorities and
+            platform compatibility allow. Launch-and-recovery crew of four or
+            fewer per launch event.
+          </p>
+          <h3>10.2 Maintenance cadence</h3>
+          <p>
+            Preventive maintenance every 30 days at refit. Sensor and compute
+            boards are line-replaceable. Software updates apply over the air
+            with dual-boot rollback. Cryptographic key rotation per sponsor
+            policy.
+          </p>
+          <h3>10.3 Spares and logistics</h3>
+          <p>
+            Sensor heads, compute SBCs, and comms terminals are spared as
+            line-replaceable units. Voyager-class platform support is provided
+            by the platform vendor; sensor and compute support is the ARMOR
+            program's responsibility.
+          </p>
+          <h3>10.4 Refit cycle</h3>
+          <p>
+            On-station mode targets ≥ 30 days of continuous operation. Transit
+            cycles target ≥ 7 days. Refit cycles target ≤ 5 days at the shore
+            facility.
+          </p>
+        </section>
+
+        <section id="questions" class="doc-section">
+          <h2>11 · Open Doctrine Questions</h2>
+          <p>
+            This doctrine does not yet resolve the following. Each is an
+            explicit doctrine-level decision required before ARMOR transitions
+            to a sponsor-issued doctrine.
+          </p>
+          <ol>
+            <li><strong>Capture / tamper disposition.</strong> What is the doctrinally-correct disposition of a captured platform?</li>
+            <li><strong>Multi-service unified command.</strong> Under joint-task-force tasking, who owns ARMOR — the supported component or the supporting component?</li>
+            <li><strong>Allied data sharing.</strong> Where on the data-sharing spectrum (raw track / classifier output / alert only) does each partner sit?</li>
+            <li><strong>Override-fail audit.</strong> When the operator overrides ARMOR and the override turns out to have been wrong, who reviews and what is the remedy?</li>
+            <li><strong>Pattern-of-life retention policy.</strong> 90 / 365 / 2555 days is a placeholder; the sponsor sets the policy.</li>
+            <li><strong>Classifier-disagreement disposition.</strong> When two ARMOR platforms classify the same track differently, what is the doctrinal resolution?</li>
+            <li><strong>Public release of pattern data.</strong> What pattern data may be released to civil partners, and on what cadence?</li>
+          </ol>
+        </section>
+
+        <section id="glossary" class="doc-section">
+          <h2>12 · Glossary</h2>
+          <dl class="doc-glossary">
+            <dt>ARM-site</dt>
+            <dd>A single ARMOR platform on station. Identifiable by call-sign (e.g., ARM-2B).</dd>
+            <dt>Calibrated alert</dt>
+            <dd>An alert whose confidence has been calibrated such that the probability claimed reflects the empirical positive rate.</dd>
+            <dt>Coasting</dt>
+            <dd>Operating mode used when comms are intermittent. Alerts buffer; flush on link recovery.</dd>
+            <dt>Denied</dt>
+            <dd>Operating mode used when comms are sustained-low. Pre-tasked station / recovery; no alert dispatch until link recovers.</dd>
+            <dt>Geofence</dt>
+            <dd>The pre-authorized boundary within which a platform is permitted to station-keep or maneuver.</dd>
+            <dt>Linked</dt>
+            <dd>Operating mode used when comms close continuously. Real-time alert flow.</dd>
+            <dt>Mission C2 tier</dt>
+            <dd>The cross-platform track-management and calibration layer. Sector-shore-resident or cutter-resident.</dd>
+            <dt>Override</dt>
+            <dd>A one-click action available to the watch officer to suppress, mark false, or escalate an alert.</dd>
+            <dt>Pattern-of-life</dt>
+            <dd>The accumulated record of small-vessel behavior over the box, queryable by analyst.</dd>
+            <dt>Picket</dt>
+            <dd>The standard ARMOR formation: four platforms along an approach lane, ~18 nm apart.</dd>
+            <dt>Recovery</dt>
+            <dd>Operating mode used when pre-mission tasking instructs return.</dd>
+            <dt>Tasking package</dt>
+            <dd>The set of pre-mission instructions that bound a platform's behavior on station.</dd>
+            <dt>Watch tier</dt>
+            <dd>The sector watch floor. The human in the loop. The decision authority.</dd>
+          </dl>
+        </section>
+
+        <footer class="doctrine-footnote">
+          <p>
+            <strong>Doctrine version 0.1 — concept stage.</strong> Public-release;
+            non-binding. To be replaced by sponsor-issued doctrine on entry to a
+            program of record. Comments, corrections, and disagreements
+            welcomed via the program brief.
+          </p>
+          <p>
+            <a href="../index.html#contact">Request a brief</a> ·
+            <a href="https://github.com/augustave/armor/tree/main/WSA">Open the WSA dossier</a>
+          </p>
+        </footer>
+      </article>
+    </main>
+
+    <footer class="site-footer" aria-label="Site footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <div>
+            <strong>ARMOR</strong>
+            <span>Maritime Defense UAV / Concept</span>
+          </div>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="../index.html#mission">Mission</a>
+          <a href="../index.html#platforms">Platforms</a>
+          <a href="../index.html#program">Program</a>
+          <a href="./">Doctrine</a>
+        </nav>
+        <div class="footer-meta">
+          <span>UNCLASSIFIED // FOR PUBLIC RELEASE</span>
+          <span>Doctrine v0.1</span>
+          <a href="mailto:briefing@armor-uav.example">briefing@armor-uav.example</a>
+        </div>
+      </div>
+      <div class="footer-base">
+        <span>&copy; 2026 ARMOR Program</span>
+        <span>Concept-stage doctrine &mdash; non-binding.</span>
+      </div>
+    </footer>
+  </body>
+</html>

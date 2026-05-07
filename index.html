@@ -31,10 +31,10 @@
       </a>
       <nav class="nav-links" aria-label="Page sections">
         <a href="#mission">Mission</a>
-        <a href="#system">System</a>
+        <a href="#platforms">Platforms</a>
         <a href="#ops">Ops</a>
         <a href="#program">Program</a>
-        <a href="#fleet">Fleet</a>
+        <a href="doctrine/">Doctrine</a>
         <a href="#contact">Brief</a>
       </nav>
     </header>
@@ -192,6 +192,148 @@
         </div>
       </section>
 
+      <section class="platforms-section scan-section" id="platforms" aria-labelledby="platforms-title">
+        <div class="section-hud" aria-hidden="true">
+          <span>PLATFORM CLASSES</span>
+          <span>ARMOR-A · B · C · D</span>
+        </div>
+        <div class="platforms-intro">
+          <p class="eyebrow dark">Platform Classes</p>
+          <h2 id="platforms-title">Four classes, one mission thread.</h2>
+          <p>
+            ARMOR is platform-agnostic at the concept level — the picket logic,
+            the autonomy posture, and the alert calibration are common across
+            classes. The four classes below are the candidate hulls under
+            consideration. Class A is the baseline; B, C, and D are alternates
+            sized for niches the baseline does not cover.
+          </p>
+        </div>
+        <div class="platforms-grid">
+          <article class="platform-card reveal">
+            <header class="platform-head">
+              <span class="platform-tag">A</span>
+              <div>
+                <p class="platform-name">ARMOR-A — Picket</p>
+                <p class="platform-role">Persistent station-keeper. The baseline.</p>
+              </div>
+              <span class="platform-status is-baseline">BASELINE</span>
+            </header>
+            <p class="platform-blurb">
+              Wave-piercing monohull, wind- and solar-augmented diesel-electric.
+              Built for weeks-on-station along an approach lane with overlapping
+              radar / EO-IR / classifier coverage. Lowest signature in the family.
+            </p>
+            <dl class="platform-specs">
+              <div><dt>Hull</dt><dd>10–12 m monohull</dd></div>
+              <div><dt>Endurance</dt><dd>≥ 30 days on station</dd></div>
+              <div><dt>Sensors</dt><dd>Radar + EO/IR + AIS + classifier</dd></div>
+              <div><dt>Comms</dt><dd>LOS · SATCOM · mesh</dd></div>
+              <div><dt>Power envelope</dt><dd>~740 W continuous</dd></div>
+              <div><dt>Picket fit</dt><dd>4 × 18 nm reference</dd></div>
+            </dl>
+            <p class="platform-employment">
+              Employment: standard 4-platform picket along a named approach
+              lane. The class the SD-2014 reference scenario was authored
+              against.
+            </p>
+          </article>
+
+          <article class="platform-card reveal">
+            <header class="platform-head">
+              <span class="platform-tag">B</span>
+              <div>
+                <p class="platform-name">ARMOR-B — Sprint</p>
+                <p class="platform-role">High-speed mobile picket. Unpredictable.</p>
+              </div>
+              <span class="platform-status">ALTERNATE</span>
+            </header>
+            <p class="platform-blurb">
+              Lighter hull, higher cruise speed, broader patrol pattern instead
+              of station-keeping. Trades coverage continuity for unpredictability —
+              raises adversary's targeting cost when the picket can't be routed
+              around.
+            </p>
+            <dl class="platform-specs">
+              <div><dt>Hull</dt><dd>8–10 m planing/semi-planing</dd></div>
+              <div><dt>Endurance</dt><dd>~10 days; refuel cycles</dd></div>
+              <div><dt>Sensors</dt><dd>Radar + EO/IR + classifier</dd></div>
+              <div><dt>Comms</dt><dd>LOS-primary · SATCOM-backup</dd></div>
+              <div><dt>Cruise / sprint</dt><dd>~12 kt / ~30 kt</dd></div>
+              <div><dt>Picket fit</dt><dd>2 × 36 nm rove</dd></div>
+            </dl>
+            <p class="platform-employment">
+              Employment: paired roving patrol covering a wider lane than
+              two A-class can hold statically. Sprint capability for repositioning
+              ahead of a forecast adversary window.
+            </p>
+          </article>
+
+          <article class="platform-card reveal">
+            <header class="platform-head">
+              <span class="platform-tag">C</span>
+              <div>
+                <p class="platform-name">ARMOR-C — Endurance</p>
+                <p class="platform-role">Forward-deployed long-haul watcher.</p>
+              </div>
+              <span class="platform-status">ALTERNATE</span>
+            </header>
+            <p class="platform-blurb">
+              Larger hull, deeper power and payload margin, longer time at sea
+              without shore refit. Built for forward / partner-theater
+              deployments where the refit cycle of A-class is too short.
+              Carries the optional acoustic / passive-RF kit for the USN variant.
+            </p>
+            <dl class="platform-specs">
+              <div><dt>Hull</dt><dd>14–16 m monohull</dd></div>
+              <div><dt>Endurance</dt><dd>≥ 60 days on station</dd></div>
+              <div><dt>Sensors</dt><dd>A-class kit + acoustic / passive-RF</dd></div>
+              <div><dt>Comms</dt><dd>LOS · SATCOM · partner-comms</dd></div>
+              <div><dt>Payload margin</dt><dd>+30 % over A-class</dd></div>
+              <div><dt>Picket fit</dt><dd>2–4 × variable spacing</dd></div>
+            </dl>
+            <p class="platform-employment">
+              Employment: theater-resident forward watch under partner force
+              command. Carries the V-USN sensor package; optional V-FMS
+              release-controlled classifier baseline.
+            </p>
+          </article>
+
+          <article class="platform-card reveal">
+            <header class="platform-head">
+              <span class="platform-tag">D</span>
+              <div>
+                <p class="platform-name">ARMOR-D — Compact</p>
+                <p class="platform-role">Cutter-deployable. Loss-tolerant.</p>
+              </div>
+              <span class="platform-status">ALTERNATE</span>
+            </header>
+            <p class="platform-blurb">
+              Smallest class. Cutter-launched-and-recovered. Sized to be the
+              loss-tolerant edge of a two-tier picket: paired with an A-class
+              watcher, dispatched to investigate / hold contacts, recovered to
+              the cutter. Designed for graceful loss.
+            </p>
+            <dl class="platform-specs">
+              <div><dt>Hull</dt><dd>5–7 m planing</dd></div>
+              <div><dt>Endurance</dt><dd>~24 hr per launch</dd></div>
+              <div><dt>Sensors</dt><dd>EO/IR + AIS; relay back to A-class</dd></div>
+              <div><dt>Comms</dt><dd>LOS to host · mesh</dd></div>
+              <div><dt>Launch / recovery</dt><dd>Cutter davit-class</dd></div>
+              <div><dt>Picket fit</dt><dd>1–2 paired with each A-class</dd></div>
+            </dl>
+            <p class="platform-employment">
+              Employment: two-tier picket — A-class watches, D-class
+              investigates and holds contacts. Loss tolerance budget per fielded
+              year is materially higher.
+            </p>
+          </article>
+        </div>
+        <div class="platforms-footer">
+          <span>Vendor-neutral concept naming. Specific hull selection runs as a separate platform trade study (DT-05).</span>
+          <a class="button secondary" href="https://github.com/augustave/armor/blob/main/WSA/outputs/05_hardware_integration_and_productization_plan.md">Read the productization plan</a>
+        </div>
+      </section>
+
       <section class="ops-section scan-section" id="ops" aria-labelledby="ops-title">
         <div class="section-hud" aria-hidden="true">
           <span>SOFTWARE LAYER</span>
@@ -343,6 +485,38 @@
         <div class="program-footer">
           <a class="button secondary" href="https://github.com/augustave/armor/tree/main/WSA">Open the full dossier</a>
           <span>UNCLASSIFIED // FOR PUBLIC RELEASE — capture / pre-RFP positioning, not milestone-A.</span>
+        </div>
+      </section>
+
+      <section class="doctrine-teaser scan-section" id="doctrine" aria-labelledby="doctrine-teaser-title">
+        <div class="section-hud" aria-hidden="true">
+          <span>EMPLOYMENT DOCTRINE</span>
+          <span>v0.1 · CONCEPT-STAGE</span>
+        </div>
+        <div class="doctrine-teaser-inner">
+          <div class="doctrine-teaser-copy">
+            <p class="eyebrow dark">Doctrine</p>
+            <h2 id="doctrine-teaser-title">How ARMOR is intended to be employed.</h2>
+            <p>
+              ARMOR observes. ARMOR classifies. ARMOR alerts. <em>Humans task and act.</em>
+              The doctrine document captures the authorities posture, the four
+              operating modes, command relationships, rules of alerting,
+              operator workflow, and theater variants — concept-stage and
+              non-binding, written so a watch officer, a sponsor, and a
+              qualification reviewer can read the same page.
+            </p>
+            <a class="button primary light" href="doctrine/">Read the doctrine</a>
+          </div>
+          <ol class="doctrine-tease-list" aria-label="Doctrine sections">
+            <li><span>02</span> Authorities &amp; Posture</li>
+            <li><span>03</span> Concept of Employment</li>
+            <li><span>04</span> Operating Modes</li>
+            <li><span>05</span> Command Relationships</li>
+            <li><span>06</span> Rules of Alerting</li>
+            <li><span>07</span> Operator Workflow</li>
+            <li><span>09</span> Theater Variants</li>
+            <li><span>10</span> Sustainment</li>
+          </ol>
         </div>
       </section>
 

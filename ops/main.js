@@ -809,7 +809,7 @@ function drawScenario(transform, time) {
 }
 
 function resizeCanvas() {
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
   const width = Math.floor(window.innerWidth);
   const height = Math.floor(window.innerHeight);
   canvas.width = Math.floor(width * dpr);
@@ -1173,8 +1173,59 @@ function drawFrame(now) {
   drawScanline(animationState.time);
   updateTimeUI();
 
+  if (loopRunning && shouldLoop()) {
+    rafHandle = requestAnimationFrame(drawFrame);
+  } else {
+    loopRunning = false;
+    rafHandle = 0;
+  }
+}
+
+// Loop gating — only burn frames when the simulation is actually visible
+// AND playing. Stops the rAF chain entirely when paused, off-screen, or
+// the tab is hidden. This is what keeps scroll smooth on the parent page.
+let rafHandle = 0;
+let loopRunning = false;
+let externallyPaused = false; // set by parent via postMessage when iframe is offscreen
+
+function shouldLoop() {
+  return animationState.playing && !externallyPaused && !document.hidden;
+}
+
+function startLoop() {
+  if (loopRunning || !shouldLoop()) return;
+  loopRunning = true;
+  animationState.lastFrame = performance.now();
+  rafHandle = requestAnimationFrame(drawFrame);
+}
+
+function stopLoop() {
+  loopRunning = false;
+  if (rafHandle) cancelAnimationFrame(rafHandle);
+  rafHandle = 0;
+}
+
+function redrawOnce() {
+  if (loopRunning) return;
+  // One-shot frame for paused-state updates (scrubber, layer toggles, mode change).
   requestAnimationFrame(drawFrame);
 }
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) stopLoop(); else startLoop();
+});
+
+window.addEventListener("message", (event) => {
+  const data = event.data;
+  if (!data || typeof data !== "object" || data.source !== "armor-ops") return;
+  if (data.action === "pause") {
+    externallyPaused = true;
+    stopLoop();
+  } else if (data.action === "resume") {
+    externallyPaused = false;
+    startLoop();
+  }
+});
 
 playPauseButton.addEventListener("click", () => {
   animationState.playing = !animationState.playing;
@@ -1183,6 +1234,7 @@ playPauseButton.addEventListener("click", () => {
     "aria-label",
     animationState.playing ? "Pause animation" : "Play animation",
   );
+  if (animationState.playing) startLoop(); else stopLoop();
 });
 
 restartButton.addEventListener("click", () => {
@@ -1190,6 +1242,7 @@ restartButton.addEventListener("click", () => {
   animationState.playing = true;
   playPauseButton.textContent = "Pause";
   updateTimeUI();
+  startLoop();
 });
 
 speedButton.addEventListener("click", () => {
@@ -1203,6 +1256,8 @@ timeScrubber.addEventListener("input", () => {
   animationState.playing = false;
   playPauseButton.textContent = "Play";
   updateTimeUI();
+  stopLoop();
+  redrawOnce();
 });
 
 modeButtons.forEach((button) => {
@@ -1237,4 +1292,7 @@ renderScenarioMetrics();
 updateLayerVisibility();
 updateTimeUI();
 setMode("observe");
-requestAnimationFrame(drawFrame);
+startLoop();
+// Render at least one frame even if the loop is gated (paused via URL param,
+// off-screen on first paint, etc.) so the canvas isn't blank.
+if (!loopRunning) redrawOnce();

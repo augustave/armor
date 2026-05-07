@@ -102,7 +102,23 @@ document.querySelectorAll("[data-ops-launch]").forEach((trigger) => {
     iframe.loading = "eager";
     iframe.setAttribute("allow", "fullscreen");
     trigger.replaceWith(iframe);
-    // Move focus into the iframe so keyboard users land on the simulation.
     iframe.addEventListener("load", () => { try { iframe.focus(); } catch (_) {} }, { once: true });
+
+    // Pause the simulation when the iframe scrolls out of view. The webapp
+    // burns RAF frames continuously; this is what keeps the rest of the
+    // page smooth while you're reading other sections.
+    const post = (action) => {
+      try { iframe.contentWindow.postMessage({ source: "armor-ops", action }, "*"); } catch (_) {}
+    };
+    let isVisible = true;
+    const visibilityObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const nowVisible = entry.isIntersecting;
+        if (nowVisible === isVisible) return;
+        isVisible = nowVisible;
+        post(nowVisible ? "resume" : "pause");
+      });
+    }, { rootMargin: "200px 0px", threshold: 0 });
+    visibilityObserver.observe(iframe);
   });
 });

@@ -86,3 +86,23 @@ if (!reducedMotion && statusItems.length > 1) {
     statusItems[activeStatus].classList.add("is-active");
   }, 1600);
 }
+
+// Click-to-launch for the SD-2014 ops embed.
+// Keeps the heavy Canvas 2D animation off the main thread until the
+// visitor opts in, fixing scroll jank on the rest of the page.
+document.querySelectorAll("[data-ops-launch]").forEach((trigger) => {
+  trigger.addEventListener("click", () => {
+    const wrap = trigger.closest("[data-ops-embed]");
+    if (!wrap) return;
+    const src = wrap.getAttribute("data-src");
+    if (!src) return;
+    const iframe = document.createElement("iframe");
+    iframe.src = src;
+    iframe.title = "ARMOR Mission Webapp — interactive simulation";
+    iframe.loading = "eager";
+    iframe.setAttribute("allow", "fullscreen");
+    trigger.replaceWith(iframe);
+    // Move focus into the iframe so keyboard users land on the simulation.
+    iframe.addEventListener("load", () => { try { iframe.focus(); } catch (_) {} }, { once: true });
+  });
+});

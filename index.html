@@ -223,16 +223,18 @@
           </figure>
         </div>
 
-        <div class="ops-embed reveal">
-          <div class="ops-embed-hud" aria-hidden="true">
+        <div class="ops-embed reveal" data-ops-embed data-src="ops/index.html">
+          <div class="ops-embed-hud">
             <span>Live mission webapp</span>
             <a href="ops/index.html" target="_blank" rel="noopener">Open fullscreen ↗</a>
           </div>
-          <iframe
-            src="ops/index.html"
-            title="ARMOR Mission Webapp — interactive simulation"
-            loading="lazy"
-          ></iframe>
+          <button class="ops-embed-poster" type="button" data-ops-launch aria-label="Launch interactive mission webapp">
+            <img src="AR01-OPS/sd-2014-t7_4.png" alt="" aria-hidden="true" />
+            <span class="ops-embed-play" aria-hidden="true">
+              <svg viewBox="0 0 32 32" width="22" height="22"><polygon points="11,8 11,24 25,16" fill="currentColor"/></svg>
+              Launch interactive
+            </span>
+          </button>
         </div>
       </section>
 

@@ -1065,6 +1065,87 @@ h3 {
   width: 100%;
 }
 
+.ops-embed-poster {
+  appearance: none;
+  aspect-ratio: 16 / 10;
+  background: #0a192f;
+  border: 0;
+  cursor: pointer;
+  display: block;
+  isolation: isolate;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+.ops-embed-poster img {
+  filter: brightness(0.62) contrast(1.06) saturate(0.92);
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  position: absolute;
+  transition: filter 360ms ease, transform 800ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  width: 100%;
+}
+
+.ops-embed-poster::after {
+  background:
+    radial-gradient(ellipse at 50% 56%, rgba(10, 11, 12, 0) 0%, rgba(10, 11, 12, 0.55) 70%),
+    linear-gradient(180deg, rgba(10, 11, 12, 0.1), rgba(10, 11, 12, 0.55));
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 240ms ease;
+}
+
+.ops-embed-poster:hover img,
+.ops-embed-poster:focus-visible img {
+  filter: brightness(0.78) contrast(1.08) saturate(1);
+  transform: scale(1.015);
+}
+
+.ops-embed-play {
+  align-items: center;
+  background: rgba(10, 11, 12, 0.62);
+  border: 1px solid var(--signal);
+  color: var(--bone);
+  display: inline-flex;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  gap: 12px;
+  left: 50%;
+  letter-spacing: 0.13em;
+  padding: 14px 22px 14px 18px;
+  position: absolute;
+  text-transform: uppercase;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: background 200ms ease, color 200ms ease, transform 200ms ease;
+  z-index: 2;
+}
+
+.ops-embed-poster:hover .ops-embed-play,
+.ops-embed-poster:focus-visible .ops-embed-play {
+  background: var(--bone);
+  color: #111213;
+  transform: translate(-50%, -50%) scale(1.04);
+}
+
+.ops-embed-play svg {
+  color: var(--signal);
+  flex-shrink: 0;
+  transition: color 200ms ease;
+}
+
+.ops-embed-poster:hover .ops-embed-play svg,
+.ops-embed-poster:focus-visible .ops-embed-play svg {
+  color: #111213;
+}
+
 @media (max-width: 980px) {
   .ops-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));

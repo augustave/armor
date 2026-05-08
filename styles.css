@@ -731,30 +731,204 @@ h3 {
   max-width: 460px;
 }
 
+/* Mission figure — integrated scan zone, no frame, hud overlays, edge-bleed. */
 .mission-figure {
-  border: 1px solid var(--line);
+  isolation: isolate;
   margin: 0;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
 }
 
 .mission-figure img {
   display: block;
-  filter: grayscale(0.42) saturate(0.74) contrast(1.14) brightness(0.78);
+  filter: grayscale(0.62) saturate(0.6) contrast(1.18) brightness(0.7);
   height: auto;
-  transition: filter 420ms ease, transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition: filter 700ms ease, transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
   width: 100%;
+  /* Bleed the image into the section bg via radial vignette + bottom fade.
+     No hard rectangular edge — the image dissolves into the page. */
+  -webkit-mask-image:
+    radial-gradient(ellipse 110% 130% at 50% 35%, #000 55%, rgba(0, 0, 0, 0.18) 100%),
+    linear-gradient(180deg, #000 60%, transparent 100%);
+  mask-image:
+    radial-gradient(ellipse 110% 130% at 50% 35%, #000 55%, rgba(0, 0, 0, 0.18) 100%),
+    linear-gradient(180deg, #000 60%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
 
 .mission-figure:hover img,
 .mission-figure:focus-within img {
-  filter: grayscale(0.18) saturate(0.86) contrast(1.18) brightness(0.88);
-  transform: scale(1.018);
+  filter: grayscale(0.32) saturate(0.78) contrast(1.22) brightness(0.82);
+  transform: scale(1.012);
 }
 
+/* Soft volumetric fog over the image — scatters the harsh edges and
+   gives it the same hazy depth as the hero. */
+.mission-figure-fog {
+  background:
+    radial-gradient(ellipse at 32% 58%, rgba(201, 184, 148, 0.16), transparent 48%),
+    radial-gradient(ellipse at 78% 30%, rgba(232, 226, 209, 0.08), transparent 42%),
+    linear-gradient(180deg, rgba(10, 11, 12, 0.18), transparent 36%, rgba(10, 11, 12, 0.55));
+  filter: blur(14px);
+  inset: -4%;
+  mix-blend-mode: screen;
+  opacity: 0.78;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+/* Scan grid overlay — same vocabulary as the hero hud-grid, lower density. */
+.mission-figure-grid {
+  background-image:
+    linear-gradient(rgba(201, 184, 148, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 184, 148, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(232, 226, 209, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 226, 209, 0.04) 1px, transparent 1px);
+  background-position: center;
+  background-size: 96px 96px, 96px 96px, 18px 18px, 18px 18px;
+  inset: 6% 4%;
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 86%);
+  mix-blend-mode: screen;
+  opacity: 0.42;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+/* Scan band sweeps when section enters view (matches existing scan-zone behavior). */
+.mission-figure-band {
+  background:
+    linear-gradient(180deg, transparent, rgba(201, 184, 148, 0.08), rgba(232, 226, 209, 0.34), rgba(201, 184, 148, 0.08), transparent);
+  box-shadow: 0 0 38px rgba(201, 184, 148, 0.34);
+  height: 14%;
+  left: 0;
+  mix-blend-mode: screen;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateY(-120%);
+  z-index: 3;
+}
+
+.mission-figure.is-visible .mission-figure-band,
+.scan-section .mission-figure.is-visible .mission-figure-band {
+  animation: missionFigureScan 1100ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes missionFigureScan {
+  0% { opacity: 0; transform: translateY(-120%); }
+  18%, 84% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(720%); }
+}
+
+/* Anatomy callouts — thin guide line + mono label. NOT corner fiducials. */
+.mission-callouts {
+  inset: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 4;
+}
+
+.mission-callouts .callout {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  position: absolute;
+  text-transform: uppercase;
+}
+
+.mission-callouts .callout-line {
+  background: linear-gradient(90deg, transparent, var(--signal) 40%, var(--signal));
+  box-shadow: 0 0 14px rgba(201, 184, 148, 0.55);
+  display: block;
+  height: 1px;
+  width: 70px;
+}
+
+.mission-callouts .callout-label {
+  align-items: baseline;
+  color: var(--bone);
+  display: inline-flex;
+  flex-direction: column;
+  gap: 1px;
+  text-shadow: 0 0 10px rgba(10, 11, 12, 0.9), 0 0 22px rgba(10, 11, 12, 0.6);
+}
+
+.mission-callouts .callout-label b {
+  color: var(--signal);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-shadow: 0 0 14px rgba(201, 184, 148, 0.55);
+}
+
+.mission-callouts .callout-label i {
+  color: var(--bone-soft);
+  font-size: 0.56rem;
+  font-style: normal;
+  letter-spacing: 0.08em;
+}
+
+.mission-callouts .callout-mast {
+  display: grid;
+  gap: 6px;
+  grid-template-columns: 70px auto;
+  align-items: center;
+  left: 36%;
+  top: 18%;
+  transform: translate(-100%, -100%);
+}
+
+.mission-callouts .callout-mast .callout-line {
+  background: linear-gradient(90deg, var(--signal), var(--signal) 60%, transparent);
+  order: 2;
+  width: 70px;
+}
+
+.mission-callouts .callout-mast .callout-label {
+  order: 1;
+  text-align: right;
+  align-items: flex-end;
+}
+
+.mission-callouts .callout-hull {
+  display: grid;
+  gap: 6px;
+  grid-template-columns: 70px auto;
+  align-items: center;
+  left: 56%;
+  top: 64%;
+}
+
+.mission-callouts .callout-wake {
+  display: grid;
+  gap: 6px;
+  grid-template-columns: auto 70px;
+  align-items: center;
+  left: 8%;
+  top: 78%;
+}
+
+.mission-callouts .callout-wake .callout-label {
+  text-align: right;
+  align-items: flex-end;
+}
+.mission-callouts .callout-wake .callout-line {
+  background: linear-gradient(90deg, transparent, var(--signal) 40%, var(--signal));
+  order: 2;
+}
+
+/* Caption: bleeds into the section bg, no hard scrim, mono spec. */
 .mission-figure figcaption {
-  background: linear-gradient(0deg, rgba(10, 11, 12, 0.86), rgba(10, 11, 12, 0));
-  bottom: 0;
+  align-items: baseline;
+  border-top: 1px solid rgba(201, 184, 148, 0.16);
   color: var(--bone-soft);
   display: flex;
   flex-wrap: wrap;
@@ -762,17 +936,21 @@ h3 {
   font-size: 0.66rem;
   gap: 18px;
   justify-content: space-between;
-  left: 0;
   letter-spacing: 0.1em;
-  padding: 64px clamp(18px, 2.4vw, 28px) 18px;
-  position: absolute;
-  right: 0;
+  margin: 14px clamp(2px, 1vw, 8px) 0;
+  padding-top: 12px;
   text-transform: uppercase;
 }
 
 .mission-figure figcaption span:last-child {
   color: var(--signal);
   text-shadow: 0 0 14px rgba(201, 184, 148, 0.42);
+}
+
+@media (max-width: 720px) {
+  .mission-callouts .callout-mast,
+  .mission-callouts .callout-hull,
+  .mission-callouts .callout-wake { display: none; }
 }
 
 .split-section {

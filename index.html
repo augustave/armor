@@ -195,7 +195,7 @@
       <section class="system-section scan-section" id="system" aria-labelledby="system-title">
         <div class="section-hud" aria-hidden="true">
           <span>VECTOR OVERLAY</span>
-          <span>MESH COHERENCE 91%</span>
+          <span>MESH COHERENCE / ACTIVE</span>
         </div>
         <div class="section-kicker">Vector Overlay</div>
         <h2 id="system-title">A fleet layer for contested water.</h2>
@@ -303,7 +303,9 @@
             <p class="platform-employment">
               Employment: paired roving patrol covering a wider lane than
               two A-class can hold statically. Sprint capability for repositioning
-              ahead of a forecast adversary window.
+              ahead of a forecast adversary window. Without mesh, ARMOR-B enters
+              Denied mode faster than A-class under jamming or range extension —
+              factor into picket architecture.
             </p>
           </article>
 
@@ -363,7 +365,9 @@
             <p class="platform-employment">
               Employment: two-tier picket — A-class watches, D-class
               investigates and holds contacts. Loss tolerance budget per fielded
-              year is materially higher.
+              year is materially higher. LOS dependency means cutter displacement
+              triggers Denied mode; recovery nav must be pre-tasked before the
+              host maneuvers.
             </p>
           </article>
         </div>
@@ -381,33 +385,34 @@
         <div class="section-kicker">Mission Layer</div>
         <h2 id="ops-title">The software the hull carries.</h2>
         <p class="ops-intro">
-          Bathymetry, sensor tracks, detections, and ARM-site markers, rendered
+          Bathymetry, sensor tracks, detections, and ARM-site markers (patrol
+          station designators, distinct from ARMOR platform classes), rendered
           as a single operational picture. Drive the simulation below or step
           through the captured moments.
         </p>
 
         <div class="ops-strip" aria-label="Mission layer stills">
           <figure class="ops-frame reveal">
-            <img src="AR01-OPS/sd-2014-t0_9.png" alt="Mission layer at T+00:00.9 — ARM-2B site reveal" loading="lazy" />
-            <figcaption><span>T+00:00.9</span> ARM-2B reveal</figcaption>
+            <img src="AR01-OPS/sd-2014-t0_9.png" alt="Mission layer at T+00:00.9 — ARM-2B patrol site reveal" loading="lazy" />
+            <figcaption><span>T+00:00.9</span> ARM-2B patrol site reveal</figcaption>
           </figure>
           <figure class="ops-frame reveal">
-            <img src="AR01-OPS/sd-2014-t3_8.png" alt="Mission layer at T+00:03.8 — three-site picket formation" loading="lazy" />
+            <img src="AR01-OPS/sd-2014-t3_8.png" alt="Mission layer at T+00:03.8 — three patrol sites in picket formation" loading="lazy" />
             <figcaption><span>T+00:03.8</span> 3-site picket</figcaption>
           </figure>
           <figure class="ops-frame reveal">
-            <img src="AR01-OPS/sd-2014-t7_4.png" alt="Mission layer at T+00:07.4 — full constellation lit" loading="lazy" />
+            <img src="AR01-OPS/sd-2014-t7_4.png" alt="Mission layer at T+00:07.4 — all four patrol sites active" loading="lazy" />
             <figcaption><span>T+00:07.4</span> Full constellation</figcaption>
           </figure>
           <figure class="ops-frame reveal">
-            <img src="AR01-OPS/sd-2014-t14.png" alt="Mission layer at T+00:14 — mid-loop calm" loading="lazy" />
+            <img src="AR01-OPS/sd-2014-t14.png" alt="Mission layer at T+00:14 — mid-loop calm across all patrol sites" loading="lazy" />
             <figcaption><span>T+00:14.0</span> Mid-loop</figcaption>
           </figure>
         </div>
 
         <div class="ops-embed reveal" data-ops-embed data-src="ops/index.html">
           <div class="ops-embed-hud">
-            <span>Live mission webapp</span>
+            <span>Synthetic mission simulation</span>
             <a href="ops/index.html" target="_blank" rel="noopener">Open fullscreen ↗</a>
           </div>
           <button class="ops-embed-poster" type="button" data-ops-launch aria-label="Launch interactive mission webapp">
@@ -555,6 +560,7 @@
             <li><span>05</span> Command Relationships</li>
             <li><span>06</span> Rules of Alerting</li>
             <li><span>07</span> Operator Workflow</li>
+            <li><span>08</span> Risk Tolerance &amp; Override</li>
             <li><span>09</span> Theater Variants</li>
             <li><span>10</span> Sustainment</li>
           </ol>
@@ -643,6 +649,6 @@
       </div>
     </footer>
 
-    <script src="script.v1.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

@@ -731,6 +731,76 @@ h3 {
   max-width: 460px;
 }
 
+/* Concept-render honesty tag — placed on every illustrative image to mark
+   it as concept-stage, not CAD-derived per the visual-systems-architect
+   skill's "no hallucinated components" invariant. */
+.concept-tag {
+  background: rgba(10, 11, 12, 0.62);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(201, 184, 148, 0.32);
+  color: var(--bone-soft);
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  padding: 6px 10px;
+  pointer-events: none;
+  position: absolute;
+  right: 14px;
+  text-transform: uppercase;
+  top: 14px;
+  z-index: 6;
+}
+
+.concept-tag::before {
+  background: var(--signal);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(201, 184, 148, 0.7);
+  content: "";
+  display: inline-block;
+  height: 5px;
+  margin-right: 8px;
+  vertical-align: middle;
+  width: 5px;
+}
+
+/* Hero variant — sits in the upper-right corner of the hero, above the
+   telemetry but inside the scrim. */
+.concept-tag--hero {
+  right: clamp(22px, 5vw, 64px);
+  top: 122px;
+  z-index: 7;
+}
+
+/* Closing variant — bottom-right of the closing scrim. */
+.concept-tag--closing {
+  right: clamp(22px, 7vw, 96px);
+  top: auto;
+  bottom: 32px;
+  z-index: 7;
+}
+
+/* Platforms section disclaimer — concept-target framing. */
+.platforms-disclaimer {
+  border-top: 1px solid var(--line);
+  color: var(--bone-soft);
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  gap: 22px;
+  letter-spacing: 0.08em;
+  margin-top: 22px;
+  padding-top: 16px;
+  text-transform: uppercase;
+}
+
+.platforms-disclaimer span:first-child {
+  color: var(--signal);
+  text-shadow: 0 0 14px rgba(201, 184, 148, 0.42);
+}
+
 /* Mission figure — integrated scan zone, no frame, hud overlays, edge-bleed. */
 .mission-figure {
   isolation: isolate;

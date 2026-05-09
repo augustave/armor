@@ -813,7 +813,7 @@ h3 {
   display: block;
   filter: grayscale(0.62) saturate(0.6) contrast(1.18) brightness(0.7);
   height: auto;
-  transition: filter 700ms ease, transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition: filter 500ms ease, transform 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   width: 100%;
   /* Bleed the image into the section bg via radial vignette + bottom fade.
      No hard rectangular edge — the image dissolves into the page. */
@@ -886,7 +886,8 @@ h3 {
 
 .mission-figure.is-visible .mission-figure-band,
 .scan-section .mission-figure.is-visible .mission-figure-band {
-  animation: missionFigureScan 1100ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  /* Delay so the scan fires after the reveal settles, not during it */
+  animation: missionFigureScan 1100ms cubic-bezier(0.16, 1, 0.3, 1) 300ms forwards;
 }
 
 @keyframes missionFigureScan {
@@ -1134,14 +1135,17 @@ h3 {
   transform: translateY(-120%);
 }
 
-.scan-panel.is-visible::after,
-.scan-panel:hover::after,
-.scan-panel:focus-within::after {
-  animation: panelScan 760ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+/* Scan fires once when the panel enters view — delayed so it runs after
+   the reveal settles, not simultaneously with it. Hover and focus-within
+   do NOT re-trigger the animation; the image scale+filter handles that
+   feedback. Re-firing the animation on hover restarts from the forwards-
+   filled end state, causing a visible jump. */
+.scan-panel.is-visible::after {
+  animation: panelScan 760ms cubic-bezier(0.16, 1, 0.3, 1) 220ms forwards;
 }
 
 .scan-panel[data-panel-label] > img {
-  transition: filter 420ms ease, transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition: filter 400ms ease, transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .scan-panel[data-panel-label]::before {
@@ -1302,7 +1306,7 @@ h3 {
   filter: brightness(0.78) contrast(1.06) saturate(0.88);
   height: auto;
   object-fit: cover;
-  transition: filter 360ms ease, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition: filter 380ms ease, transform 380ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   width: 100%;
 }
 
@@ -1389,7 +1393,7 @@ h3 {
   inset: 0;
   object-fit: cover;
   position: absolute;
-  transition: filter 360ms ease, transform 800ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition: filter 420ms ease, transform 420ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   width: 100%;
 }
 
@@ -2183,17 +2187,19 @@ h3 {
 .reveal {
   opacity: 1;
   transform: none;
-  transition: opacity 700ms ease, transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1), filter 700ms ease;
+  /* opacity leads slightly so content is legible before it fully settles;
+     transform uses easeOutExpo for a crisp mechanical snap with soft landing.
+     No filter here — images have their own filter transitions; blending them
+     causes the dirty pixel overlap. */
+  transition: opacity 480ms ease, transform 640ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .js-enabled .reveal {
-  filter: blur(6px);
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(20px);
 }
 
 .js-enabled .reveal.is-visible {
-  filter: blur(0);
   opacity: 1;
   transform: translateY(0);
 }
@@ -2325,7 +2331,6 @@ h3 {
 
   .reveal,
   .js-enabled .reveal {
-    filter: none;
     opacity: 1;
     transform: none;
   }

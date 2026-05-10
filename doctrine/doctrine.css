@@ -1,4 +1,9 @@
-/* Doctrine page — long-form readable layout that inherits the main palette. */
+/* Doctrine page — long-form readable layout. Imports the shared design
+   tokens directly (rather than depending on /styles.css load order) so
+   doctrine has its own explicit dependency on the token contract. */
+@import url("../tokens.css");
+
+
 
 .doctrine-body main.doctrine-shell {
   display: grid;

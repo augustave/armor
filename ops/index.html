@@ -43,6 +43,15 @@
         <label><input type="checkbox" data-layer="markers" checked> ARM markers</label>
         <label><input type="checkbox" data-layer="graph" checked> Entity graph</label>
         <label><input type="checkbox" data-layer="scenario" checked> Scenario</label>
+
+        <div class="panel-divider" aria-hidden="true"></div>
+        <div class="panel-subtitle">Operating Modes <span class="panel-subtitle-ref">(doctrine §4)</span></div>
+        <ul class="mode-legend" aria-label="Operating mode legend">
+          <li><span class="mode-swatch" style="--mode-color: #00ff00" aria-hidden="true"></span>LINKED <em>continuous comms</em></li>
+          <li><span class="mode-swatch" style="--mode-color: #ffd700" aria-hidden="true"></span>COASTING <em>intermittent</em></li>
+          <li><span class="mode-swatch" style="--mode-color: #d23b30" aria-hidden="true"></span>DENIED <em>jam / range loss</em></li>
+          <li><span class="mode-swatch" style="--mode-color: #d946ef" aria-hidden="true"></span>RECOVERY <em>pre-tasked RTB</em></li>
+        </ul>
       </aside>
 
       <aside class="inspector" aria-label="Selection inspector">

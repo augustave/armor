@@ -269,6 +269,42 @@ const missionMarkers = [
   { label: "[ARM-4D]", x: 0.905, y: 0.505, reveal: 7.4, focus: 0.85 },
 ];
 
+/* Operating modes per doctrine §4. Closes State B <-> State C continuity:
+   the doctrine page defines these four modes by comms duty cycle thresholds;
+   the ops webapp now visualizes which mode each platform is in across the
+   28-second loop. Staggered script demonstrates all four modes for didactic
+   continuity (one platform per mode at peak). */
+const OPERATING_MODES = {
+  LINKED:   { label: "LINKED",   color: "#00ff00", desc: "Comms continuous" },
+  COASTING: { label: "COASTING", color: "#ffd700", desc: "Comms intermittent" },
+  DENIED:   { label: "DENIED",   color: "#d23b30", desc: "Comms denied" },
+  RECOVERY: { label: "RECOVERY", color: "#d946ef", desc: "Pre-tasked RTB" },
+};
+
+function getMarkerMode(label, time) {
+  switch (label) {
+    case "[ARM-1A]":
+      // Baseline: always-linked reference
+      return OPERATING_MODES.LINKED;
+    case "[ARM-2B]":
+      // Brief drop to COASTING mid-loop
+      if (time < 9) return OPERATING_MODES.LINKED;
+      if (time < 24) return OPERATING_MODES.COASTING;
+      return OPERATING_MODES.LINKED;
+    case "[ARM-3C]":
+      // Jamming event: LINKED -> DENIED -> recovers to COASTING
+      if (time < 14) return OPERATING_MODES.LINKED;
+      if (time < 20) return OPERATING_MODES.DENIED;
+      return OPERATING_MODES.COASTING;
+    case "[ARM-4D]":
+      // Mission close: enters RECOVERY for return-to-host at end of loop
+      if (time < 22) return OPERATING_MODES.LINKED;
+      return OPERATING_MODES.RECOVERY;
+    default:
+      return OPERATING_MODES.LINKED;
+  }
+}
+
 function markerByLabel(label) {
   return missionMarkers.find((marker) => marker.label === label);
 }
@@ -1081,6 +1117,34 @@ function drawMarker(marker, transform, time) {
   ctx.strokeText(marker.label, labelX, labelY);
   ctx.fillStyle = COLORS.label;
   ctx.fillText(marker.label, labelX, labelY);
+
+  // Operating mode badge — closes State B <-> State C continuity gap
+  const mode = getMarkerMode(marker.label, time);
+  const badgeFontSize = clamp(10 * transform.scale, 9, 13);
+  ctx.font = `700 ${badgeFontSize}px "Courier New", monospace`;
+  const badgeText = mode.label;
+  const badgeWidth = ctx.measureText(badgeText).width;
+  const badgePadX = 6;
+  const badgePadY = 3;
+  const badgeY = labelY + fontSize * 0.78 + badgePadY;
+  const badgeBgX = alignRight
+    ? labelX - badgeWidth - badgePadX * 2
+    : labelX - badgePadX;
+  const badgeBgY = badgeY - badgeFontSize / 2 - badgePadY;
+  const badgeBgW = badgeWidth + badgePadX * 2;
+  const badgeBgH = badgeFontSize + badgePadY * 2;
+
+  ctx.globalAlpha = 0.78 * reveal;
+  ctx.fillStyle = "rgba(2, 8, 18, 0.86)";
+  ctx.fillRect(badgeBgX, badgeBgY, badgeBgW, badgeBgH);
+  ctx.globalAlpha = reveal;
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = mode.color;
+  ctx.strokeRect(badgeBgX + 0.5, badgeBgY + 0.5, badgeBgW - 1, badgeBgH - 1);
+  ctx.fillStyle = mode.color;
+  ctx.textBaseline = "middle";
+  ctx.fillText(badgeText, labelX, badgeY);
+
   ctx.restore();
 }
 

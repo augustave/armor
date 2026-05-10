@@ -1284,6 +1284,39 @@ h3 {
   z-index: 1;
 }
 
+/* SD-2014 ground-truth anchor: physical platform image above the synthetic
+   mission stills. Grounds the simulation in real hardware/harbor context
+   before readers see the rendered map views. Same scan-panel discipline. */
+.ops-anchor {
+  margin: 0 0 clamp(24px, 3vw, 36px) 0;
+  position: relative;
+}
+
+.ops-anchor img {
+  aspect-ratio: 21 / 9;
+  display: block;
+  filter: grayscale(0.5) saturate(0.72) contrast(1.14) brightness(0.72);
+  height: auto;
+  object-fit: cover;
+  object-position: 50% 50%;
+  width: 100%;
+}
+
+.ops-anchor:hover img,
+.ops-anchor:focus-within img {
+  filter: grayscale(0.28) saturate(0.86) contrast(1.18) brightness(0.84);
+}
+
+.ops-anchor figcaption {
+  border-top: 1px solid var(--line);
+  color: var(--bone-soft);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  padding: 14px 18px;
+  text-transform: uppercase;
+}
+
 .ops-strip {
   display: grid;
   gap: 14px;
@@ -1539,6 +1572,39 @@ h3 {
   font-size: clamp(1rem, 1.45vw, 1.18rem);
   line-height: 1.66;
   max-width: 720px;
+}
+
+/* Reference-build anchor: single banner figure between platforms intro and
+   the spec grid. Gives readers a physical reference for what the four
+   platform classes are before they read specs. Uses scan-panel discipline. */
+.platforms-anchor {
+  margin: clamp(28px, 4vw, 48px) 0 0 0;
+  position: relative;
+}
+
+.platforms-anchor img {
+  aspect-ratio: 21 / 9;
+  display: block;
+  filter: grayscale(0.5) saturate(0.72) contrast(1.14) brightness(0.72);
+  height: auto;
+  object-fit: cover;
+  object-position: 50% 42%;
+  width: 100%;
+}
+
+.platforms-anchor:hover img,
+.platforms-anchor:focus-within img {
+  filter: grayscale(0.28) saturate(0.86) contrast(1.18) brightness(0.84);
+}
+
+.platforms-anchor figcaption {
+  border-top: 1px solid var(--line);
+  color: var(--bone-soft);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  padding: 14px 18px;
+  text-transform: uppercase;
 }
 
 .platforms-grid {

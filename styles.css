@@ -689,14 +689,18 @@ h3 {
   z-index: 2;
 }
 
+/* Wall-to-wall doctrine: monster H2 + paragraph leads the section,
+   then a wall-to-wall figure follows as supporting context. The 2-col
+   grid was making the figure compete with the H2 as prime landing-action;
+   stacking + viewport bleed demotes it to a supporting frame. */
 .mission-band {
   background:
     radial-gradient(circle at 74% 20%, rgba(201, 184, 148, 0.078), transparent 28vw),
     linear-gradient(180deg, #141516, #1c1e1f);
-  display: grid;
-  gap: clamp(28px, 5vw, 64px);
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  padding: clamp(76px, 10vw, 126px) clamp(22px, 5vw, 72px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 6vw, 80px);
+  padding: clamp(76px, 10vw, 126px) clamp(22px, 5vw, 72px) 0;
 }
 
 .mission-band > * {
@@ -704,16 +708,18 @@ h3 {
   z-index: 1;
 }
 
+/* Order swap: text block leads, figure follows. The kicker "Hull Anatomy"
+   stays bundled with the figure (it labels the figure, not the H2). */
 .mission-left {
-  align-content: start;
   display: grid;
   gap: clamp(20px, 3vw, 36px);
+  order: 2;
 }
 
 .mission-right {
-  align-content: space-between;
   display: grid;
   gap: clamp(22px, 3vw, 36px);
+  order: 1;
 }
 
 .mission-band h2 {
@@ -801,12 +807,19 @@ h3 {
   text-shadow: 0 0 14px rgba(201, 184, 148, 0.42);
 }
 
-/* Mission figure — integrated scan zone, no frame, hud overlays, edge-bleed. */
+/* Mission figure — integrated scan zone, no frame, hud overlays, edge-bleed.
+   Wall-to-wall: escapes the section's horizontal padding to reach the
+   viewport edges. Body has overflow-x:hidden so 100vw is safe. */
 .mission-figure {
   isolation: isolate;
-  margin: 0;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: none;
   overflow: visible;
   position: relative;
+  width: 100vw;
 }
 
 .mission-figure img {
@@ -1024,15 +1037,16 @@ h3 {
   .mission-callouts .callout-wake { display: none; }
 }
 
+/* Wall-to-wall doctrine: split-copy text block leads, split-media follows
+   wall-to-wall. Was 2-col grid (text|image side-by-side); now stacked. */
 .split-section {
-  align-items: stretch;
   background:
     linear-gradient(90deg, rgba(10, 11, 12, 0.96), rgba(22, 24, 26, 0.94)),
     radial-gradient(circle at 62% 48%, rgba(201, 184, 148, 0.078), transparent 30vw);
   color: var(--bone);
-  display: grid;
-  grid-template-columns: minmax(320px, 0.78fr) minmax(0, 1.22fr);
-  min-height: 760px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .split-copy {
@@ -1086,20 +1100,30 @@ h3 {
   margin: 0;
 }
 
+/* Wall-to-wall: split-media escapes section padding (none here, but the
+   100vw + neg margin trick still positions it edge-to-edge regardless of
+   the parent's padding). 3:1 aspect matches the platforms/ops anchor
+   rhythm. Heavier filter brings ZC1.jpg in line with the dark palette. */
 .split-media {
-  min-height: 560px;
+  aspect-ratio: 3 / 1;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  max-width: none;
+  min-height: 0;
   overflow: clip;
   position: relative;
+  width: 100vw;
 }
 
 .split-media img {
-  filter: grayscale(0.3) saturate(0.68) contrast(1.14) brightness(0.78);
-  height: 114%;
+  filter: grayscale(0.7) saturate(0.5) contrast(1.18) brightness(0.6);
+  height: 100%;
+  inset: 0;
   left: 0;
   object-fit: cover;
   object-position: 52% 50%;
   position: absolute;
-  top: -7%;
+  top: 0;
   width: 100%;
 }
 
@@ -2450,9 +2474,10 @@ h3 {
     min-height: 0;
   }
 
+  /* Stacked layout pins split-media after split-copy; no order override. */
   .split-media {
-    min-height: 460px;
-    order: -1;
+    aspect-ratio: 16 / 9;
+    min-height: 0;
   }
 
   .capability-grid {
@@ -2556,7 +2581,8 @@ h3 {
   }
 
   .split-media {
-    min-height: 340px;
+    aspect-ratio: 4 / 3;
+    min-height: 0;
   }
 
   .panel-hud {

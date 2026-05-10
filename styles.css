@@ -1284,18 +1284,23 @@ h3 {
   z-index: 1;
 }
 
-/* SD-2014 ground-truth anchor: physical platform image above the synthetic
-   mission stills. Grounds the simulation in real hardware/harbor context
-   before readers see the rendered map views. Same scan-panel discipline. */
+/* SD-2014 ground-truth anchor: full-bleed banner between ops intro and
+   mission stills. Same wall-to-wall + heavy dark filter discipline as
+   platforms-anchor. Lets monster typography "The software the hull carries"
+   stay the prime impact element above; image reads as supporting frame. */
 .ops-anchor {
-  margin: 0 0 clamp(24px, 3vw, 36px) 0;
+  margin-bottom: clamp(24px, 3vw, 36px);
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  max-width: none;
   position: relative;
+  width: 100vw;
 }
 
 .ops-anchor img {
-  aspect-ratio: 21 / 9;
+  aspect-ratio: 3 / 1;
   display: block;
-  filter: grayscale(0.5) saturate(0.72) contrast(1.14) brightness(0.72);
+  filter: grayscale(0.82) saturate(0.4) contrast(1.22) brightness(0.5) !important;
   height: auto;
   object-fit: cover;
   object-position: 50% 50%;
@@ -1304,17 +1309,21 @@ h3 {
 
 .ops-anchor:hover img,
 .ops-anchor:focus-within img {
-  filter: grayscale(0.28) saturate(0.86) contrast(1.18) brightness(0.84);
+  filter: grayscale(0.6) saturate(0.6) contrast(1.22) brightness(0.62) !important;
 }
 
 .ops-anchor figcaption {
   border-top: 1px solid var(--line);
   color: var(--bone-soft);
   font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  padding: 14px 18px;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  padding: 14px clamp(20px, 5vw, 64px);
   text-transform: uppercase;
+}
+
+.ops-anchor .concept-tag {
+  right: clamp(20px, 5vw, 64px);
 }
 
 .ops-strip {
@@ -1574,37 +1583,48 @@ h3 {
   max-width: 720px;
 }
 
-/* Reference-build anchor: single banner figure between platforms intro and
-   the spec grid. Gives readers a physical reference for what the four
-   platform classes are before they read specs. Uses scan-panel discipline. */
+/* Reference-build anchor: full-bleed banner between platforms intro and the
+   spec grid. Wall-to-wall (escapes section padding via 50vw trick), 3:1
+   banner aspect so it reads as supporting frame, not prime landing-action.
+   Heavy dark filter forces daylight source imagery to submit to the
+   tactical palette. !important on filter to win against any scan-panel
+   hover override and stay disciplined. */
 .platforms-anchor {
-  margin: clamp(28px, 4vw, 48px) 0 0 0;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: clamp(28px, 4vw, 48px);
+  max-width: none;
   position: relative;
+  width: 100vw;
 }
 
 .platforms-anchor img {
-  aspect-ratio: 21 / 9;
+  aspect-ratio: 3 / 1;
   display: block;
-  filter: grayscale(0.5) saturate(0.72) contrast(1.14) brightness(0.72);
+  filter: grayscale(0.82) saturate(0.4) contrast(1.22) brightness(0.5) !important;
   height: auto;
   object-fit: cover;
-  object-position: 50% 42%;
+  object-position: 50% 38%;
   width: 100%;
 }
 
 .platforms-anchor:hover img,
 .platforms-anchor:focus-within img {
-  filter: grayscale(0.28) saturate(0.86) contrast(1.18) brightness(0.84);
+  filter: grayscale(0.6) saturate(0.6) contrast(1.22) brightness(0.62) !important;
 }
 
 .platforms-anchor figcaption {
   border-top: 1px solid var(--line);
   color: var(--bone-soft);
   font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  padding: 14px 18px;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  padding: 14px clamp(20px, 5vw, 64px);
   text-transform: uppercase;
+}
+
+.platforms-anchor .concept-tag {
+  right: clamp(20px, 5vw, 64px);
 }
 
 .platforms-grid {

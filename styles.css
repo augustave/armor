@@ -2420,9 +2420,17 @@ h3 {
   border: 1px solid rgba(232, 226, 209, 0.18);
   display: inline-block;
   flex-shrink: 0;
-  height: 11px;
+  /* Hardcode dimensions so the flag never reverts to the SVG default
+     300x150 replaced-element size when intrinsic sizing fights flex
+     parent layout. Width/height also set as SVG attributes for
+     defense-in-depth (renders correctly even before CSS loads). */
+  height: 12px !important;
+  max-height: 12px;
+  max-width: 22px;
+  min-height: 0;
+  min-width: 0;
   vertical-align: middle;
-  width: 21px;
+  width: 22px !important;
 }
 
 /* Release record line — surfaces deploy timestamp + commit history link

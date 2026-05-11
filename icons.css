@@ -1,0 +1,78 @@
+/* Hazard iconography — six semantic icons that persist hazard meaning
+   across the marketing surface (index.html) and procedural surface
+   (doctrine page). Per visual-systems-architect hazard_semantics_matrix.
+
+   Tokens:
+     CAUTION   — risk-aware (loss tolerance, override conditions, weather hold)
+     DENIED    — system-blocked (cyber rejects, geofence breach, comms denied)
+     ALERT     — calibrated alert dispatched to watch floor
+     OPEN      — unresolved question / pending answer
+     RECOVERY  — pre-tasked RTB / graceful degradation
+     ESCALATE  — operator escalation / human-in-the-loop intervention
+
+   Icons are defined once as inline SVG <symbol> sprites in each HTML
+   page (sprite block near top of <body>); CSS here drives base styling
+   and per-variant color tinting via currentColor + class modifier. */
+
+.hazard-icon {
+  color: var(--signal);
+  display: inline-block;
+  fill: none;
+  flex-shrink: 0;
+  height: 1em;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.4;
+  vertical-align: -0.15em;
+  width: 1em;
+}
+
+.hazard-icon--caution  { color: var(--alert); }
+.hazard-icon--denied   { color: var(--alert); }
+.hazard-icon--alert    { color: var(--signal); }
+.hazard-icon--open     { color: var(--bone-soft); }
+.hazard-icon--recovery { color: var(--signal); }
+.hazard-icon--escalate { color: var(--signal); }
+
+/* Inline-with-text usage: small gap from preceding word, tighter
+   alignment with descender. Use .hazard-mark to wrap an icon+label
+   pair when the label needs to stay together (no wrap break). */
+.hazard-mark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.hazard-mark .hazard-icon {
+  height: 0.92em;
+  width: 0.92em;
+}
+
+/* Block-level callout chip — used in doctrine where an icon needs to
+   anchor a paragraph or list item. Larger icon, signal-soft chip bg. */
+.hazard-callout {
+  align-items: flex-start;
+  background: rgba(201, 184, 148, 0.06);
+  border-left: 2px solid var(--signal);
+  display: grid;
+  font-size: 0.92rem;
+  gap: 12px;
+  grid-template-columns: 18px minmax(0, 1fr);
+  line-height: 1.55;
+  margin: 18px 0;
+  padding: 14px 18px;
+}
+
+.hazard-callout .hazard-icon {
+  height: 18px;
+  width: 18px;
+  margin-top: 2px;
+}
+
+.hazard-callout--caution { border-left-color: var(--alert); }
+.hazard-callout--caution .hazard-icon { color: var(--alert); }
+
+.hazard-callout--denied { border-left-color: var(--alert); }
+.hazard-callout--denied .hazard-icon { color: var(--alert); }

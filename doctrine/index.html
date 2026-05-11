@@ -18,6 +18,39 @@
     <link rel="stylesheet" href="./doctrine.css" />
   </head>
   <body class="doctrine-body">
+    <!-- Hazard icon sprite — six semantic icons mapped to doctrine vocabulary. See ../icons.css. -->
+    <svg class="hazard-sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+      <defs>
+        <symbol id="icon-caution" viewBox="0 0 16 16">
+          <path d="M8 2 L14 13 L2 13 Z"/>
+          <line x1="8" y1="6.5" x2="8" y2="9.5"/>
+          <line x1="8" y1="11.2" x2="8" y2="11.5"/>
+        </symbol>
+        <symbol id="icon-denied" viewBox="0 0 16 16">
+          <circle cx="8" cy="8" r="5.6"/>
+          <line x1="4" y1="12" x2="12" y2="4"/>
+        </symbol>
+        <symbol id="icon-alert" viewBox="0 0 16 16">
+          <path d="M8 2.5 a4 4 0 0 0 -4 4 v3.5 l-1.2 2 h10.4 l-1.2 -2 v-3.5 a4 4 0 0 0 -4 -4 z"/>
+          <line x1="6.5" y1="13" x2="9.5" y2="13"/>
+        </symbol>
+        <symbol id="icon-open" viewBox="0 0 16 16">
+          <path d="M5 2 L2 2 L2 14 L5 14"/>
+          <path d="M11 2 L14 2 L14 14 L11 14"/>
+          <line x1="7" y1="8" x2="9" y2="8"/>
+        </symbol>
+        <symbol id="icon-recovery" viewBox="0 0 16 16">
+          <path d="M3 8 a5 5 0 1 0 5 -5"/>
+          <path d="M1.5 6 L3 8 L4.5 6"/>
+        </symbol>
+        <symbol id="icon-escalate" viewBox="0 0 16 16">
+          <line x1="8" y1="14" x2="8" y2="4"/>
+          <path d="M5 7 L8 4 L11 7"/>
+          <line x1="3" y1="2" x2="13" y2="2"/>
+        </symbol>
+      </defs>
+    </svg>
+
     <header class="site-header" aria-label="Primary navigation">
       <a class="brand-lockup" href="../index.html#top" aria-label="ARMOR home">
         <span class="brand-mark"></span>
@@ -302,9 +335,9 @@
           <h2>7 · Operator Workflow</h2>
           <h3>7.1 The watch-officer cycle</h3>
           <ol>
-            <li>Calibrated alert appears on the watch floor: confidence band, position, behavior summary, last-seen, suggested action.</li>
+            <li><svg class="hazard-icon hazard-icon--alert" aria-hidden="true"><use href="#icon-alert"/></svg> Calibrated <strong>alert</strong> appears on the watch floor: confidence band, position, behavior summary, last-seen, suggested action.</li>
             <li>Watch officer triages the alert: <em>Mark False</em>, <em>Suppress 1 hr</em>, <em>Escalate</em>, or <em>Open track</em>.</li>
-            <li>If actionable, watch officer vectors a responder via the existing sector tasking flow.</li>
+            <li><svg class="hazard-icon hazard-icon--escalate" aria-hidden="true"><use href="#icon-escalate"/></svg> If actionable, watch officer <strong>vectors a responder</strong> via the existing sector tasking flow.</li>
             <li>ARMOR maintains the track until handoff is confirmed by the responder.</li>
             <li>The watch officer's action is logged; the audit trail is queryable by the chain of command.</li>
           </ol>
@@ -334,11 +367,14 @@
             across surviving platforms.
           </p>
           <h3>8.2 Cyber posture</h3>
-          <p>
-            ARMOR rejects unauthenticated commands cryptographically.
-            Cyber-incident events are audited and surfaced to the watch floor.
-            ARMOR does not have an autonomous cyber-counter posture.
-          </p>
+          <div class="hazard-callout hazard-callout--denied">
+            <svg class="hazard-icon" aria-hidden="true"><use href="#icon-denied"/></svg>
+            <p style="margin:0">
+              ARMOR <strong>rejects</strong> unauthenticated commands cryptographically.
+              Cyber-incident events are audited and surfaced to the watch floor.
+              ARMOR does not have an autonomous cyber-counter posture.
+            </p>
+          </div>
           <h3>8.3 Capture and tamper</h3>
           <p>
             At concept stage, ARMOR has no platform-resident anti-tamper or
@@ -346,11 +382,13 @@
             tier. Disposition under capture is a sponsor-issued doctrine item.
           </p>
           <h3>8.4 Sea state and weather</h3>
-          <p>
-            Pre-mission weather hold removes platforms from station ahead of
-            envelope-exceeding sea states. Recovery posture engages on
-            forecast violation, not on observed violation, where available.
-          </p>
+          <div class="hazard-callout hazard-callout--caution">
+            <svg class="hazard-icon" aria-hidden="true"><use href="#icon-caution"/></svg>
+            <p style="margin:0">
+              Pre-mission <strong>weather hold</strong> removes platforms from station
+              ahead of envelope-exceeding sea states. <span class="hazard-mark"><svg class="hazard-icon hazard-icon--recovery" aria-hidden="true"><use href="#icon-recovery"/></svg>Recovery posture</span> engages on forecast violation, not on observed violation, where available.
+            </p>
+          </div>
         </section>
 
         <section id="theaters" class="doc-section">
@@ -415,7 +453,7 @@
         </section>
 
         <section id="questions" class="doc-section">
-          <h2>11 · Open Doctrine Questions</h2>
+          <h2><svg class="hazard-icon hazard-icon--open" aria-hidden="true" style="height:0.78em;width:0.78em;margin-right:8px"><use href="#icon-open"/></svg>11 · Open Doctrine Questions</h2>
           <p>
             This doctrine does not yet resolve the following. Each is an
             explicit doctrine-level decision required before ARMOR transitions

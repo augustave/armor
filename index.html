@@ -17,6 +17,40 @@
     <link rel="stylesheet" href="styles.v1.css" />
   </head>
   <body>
+    <!-- Hazard icon sprite — referenced by <use href="#icon-..."/> across the page.
+         Six semantic icons mapped to doctrine vocabulary. See /icons.css. -->
+    <svg class="hazard-sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+      <defs>
+        <symbol id="icon-caution" viewBox="0 0 16 16">
+          <path d="M8 2 L14 13 L2 13 Z"/>
+          <line x1="8" y1="6.5" x2="8" y2="9.5"/>
+          <line x1="8" y1="11.2" x2="8" y2="11.5"/>
+        </symbol>
+        <symbol id="icon-denied" viewBox="0 0 16 16">
+          <circle cx="8" cy="8" r="5.6"/>
+          <line x1="4" y1="12" x2="12" y2="4"/>
+        </symbol>
+        <symbol id="icon-alert" viewBox="0 0 16 16">
+          <path d="M8 2.5 a4 4 0 0 0 -4 4 v3.5 l-1.2 2 h10.4 l-1.2 -2 v-3.5 a4 4 0 0 0 -4 -4 z"/>
+          <line x1="6.5" y1="13" x2="9.5" y2="13"/>
+        </symbol>
+        <symbol id="icon-open" viewBox="0 0 16 16">
+          <path d="M5 2 L2 2 L2 14 L5 14"/>
+          <path d="M11 2 L14 2 L14 14 L11 14"/>
+          <line x1="7" y1="8" x2="9" y2="8"/>
+        </symbol>
+        <symbol id="icon-recovery" viewBox="0 0 16 16">
+          <path d="M3 8 a5 5 0 1 0 5 -5"/>
+          <path d="M1.5 6 L3 8 L4.5 6"/>
+        </symbol>
+        <symbol id="icon-escalate" viewBox="0 0 16 16">
+          <line x1="8" y1="14" x2="8" y2="4"/>
+          <path d="M5 7 L8 4 L11 7"/>
+          <line x1="3" y1="2" x2="13" y2="2"/>
+        </symbol>
+      </defs>
+    </svg>
+
     <svg class="filter-bank" aria-hidden="true" focusable="false">
       <filter id="hud-distort" color-interpolation-filters="sRGB">
         <feTurbulence type="fractalNoise" baseFrequency="0.018 0.72" numOctaves="2" seed="11" result="noise" />
@@ -374,10 +408,7 @@
             </dl>
             <p class="platform-employment">
               Employment: two-tier picket — A-class watches, D-class
-              investigates and holds contacts. Loss tolerance budget per fielded
-              year is materially higher. LOS dependency means cutter displacement
-              triggers Denied mode; recovery nav must be pre-tasked before the
-              host maneuvers.
+              investigates and holds contacts. <span class="hazard-mark"><svg class="hazard-icon hazard-icon--caution" aria-hidden="true"><use href="#icon-caution"/></svg>Loss tolerance budget per fielded year is materially higher.</span> LOS dependency means cutter displacement triggers <span class="hazard-mark"><svg class="hazard-icon hazard-icon--denied" aria-hidden="true"><use href="#icon-denied"/></svg>Denied mode</span>; recovery nav must be pre-tasked before the host maneuvers.
             </p>
           </article>
         </div>
@@ -643,7 +674,7 @@
             <p class="eyebrow dark">Doctrine</p>
             <h2 id="doctrine-teaser-title">How ARMOR is intended to be employed.</h2>
             <p>
-              ARMOR observes. ARMOR classifies. ARMOR alerts. <em>Humans task and act.</em>
+              ARMOR observes. ARMOR classifies. ARMOR <span class="hazard-mark"><svg class="hazard-icon hazard-icon--alert" aria-hidden="true"><use href="#icon-alert"/></svg>alerts</span>. <em>Humans <span class="hazard-mark"><svg class="hazard-icon hazard-icon--escalate" aria-hidden="true"><use href="#icon-escalate"/></svg>task and act</span>.</em>
               The doctrine document captures the authorities posture, the four
               operating modes, command relationships, rules of alerting,
               operator workflow, and theater variants — concept-stage and

@@ -2,6 +2,7 @@
    tokens directly (rather than depending on /styles.css load order) so
    doctrine has its own explicit dependency on the token contract. */
 @import url("../tokens.css");
+@import url("../icons.css");
 
 
 

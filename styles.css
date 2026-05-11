@@ -1,6 +1,7 @@
 /* Shared design tokens (color, typography). Single source of truth for
    the dark tactical palette. Doctrine page imports the same file. */
 @import url("./tokens.css");
+@import url("./icons.css");
 
 * {
   box-sizing: border-box;

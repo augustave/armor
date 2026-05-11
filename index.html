@@ -14,7 +14,8 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.v1.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/svg+xml" href="logo-mark.svg" />
   </head>
   <body>
     <!-- Hazard icon sprite — referenced by <use href="#icon-..."/> across the page.
@@ -48,6 +49,17 @@
           <path d="M5 7 L8 4 L11 7"/>
           <line x1="3" y1="2" x2="13" y2="2"/>
         </symbol>
+        <!-- Brand mark: skewed parallelogram (matches the original CSS-rendered
+             .brand-mark geometry) with two internal scan lines, the upper one
+             extending past the right edge as a sensor-sweep accent. Strokes
+             use currentColor so the mark inherits text color from its parent. -->
+        <symbol id="brand-mark" viewBox="0 0 52 18">
+          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
+            <path d="M5.85 0 L39.85 0 L34 18 L0 18 Z"/>
+            <line x1="8.25" y1="8" x2="32.25" y2="8"/>
+            <line x1="22.25" y1="5" x2="51.25" y2="5"/>
+          </g>
+        </symbol>
       </defs>
     </svg>
 
@@ -60,7 +72,7 @@
 
     <header class="site-header" aria-label="Primary navigation">
       <a class="brand-lockup" href="#top" aria-label="ARMOR home">
-        <span class="brand-mark"></span>
+        <svg class="brand-mark" viewBox="0 0 52 18" aria-hidden="true" focusable="false"><use href="#brand-mark"/></svg>
         <span>ARMOR</span>
       </a>
       <nav class="nav-links" aria-label="Page sections">
@@ -755,7 +767,7 @@
     <footer class="site-footer" aria-label="Site footer">
       <div class="footer-inner">
         <div class="footer-brand">
-          <span class="brand-mark" aria-hidden="true"></span>
+          <svg class="brand-mark" viewBox="0 0 52 18" aria-hidden="true" focusable="false"><use href="#brand-mark"/></svg>
           <div>
             <strong>ARMOR</strong>
             <span>Maritime Defense UAV / Concept</span>

@@ -129,34 +129,24 @@ figure {
   text-shadow: 0 0 18px rgba(201, 184, 148, 0.437);
 }
 
+/* Brand mark — now an inline <svg><use href="#brand-mark"/></svg>
+   referencing the symbol in the SVG sprite at the top of body.
+   Strokes inside the symbol use currentColor, so the mark inherits
+   text color from .brand-lockup. Drop-shadow filter recreates the
+   signal-color glow that the old box-shadow provided. */
 .brand-mark {
-  border: 1px solid currentColor;
-  box-shadow: 0 0 18px rgba(201, 184, 148, 0.281), inset 0 0 12px rgba(201, 184, 148, 0.14);
   display: inline-block;
-  height: 18px;
-  position: relative;
-  transform: skewX(-18deg);
-  width: 34px;
-}
-
-.brand-mark::before,
-.brand-mark::after {
-  background: currentColor;
-  content: "";
-  height: 1px;
-  position: absolute;
-}
-
-.brand-mark::before {
-  left: 5px;
-  right: 5px;
-  top: 8px;
-}
-
-.brand-mark::after {
-  left: 18px;
-  right: -13px;
-  top: 5px;
+  filter: drop-shadow(0 0 6px rgba(201, 184, 148, 0.42));
+  flex-shrink: 0;
+  /* 52:18 aspect (matches the symbol viewBox). At 18px height the rendered
+     width is 52px, which matches the original CSS-rendered .brand-mark
+     bounding box (34px parallelogram + 13px sensor-sweep extension + skew
+     padding). !important defends against intrinsic SVG sizing in flex
+     contexts (same defense pattern as .footer-flag). */
+  height: 18px !important;
+  max-width: 52px;
+  vertical-align: middle;
+  width: 52px !important;
 }
 
 .nav-links {

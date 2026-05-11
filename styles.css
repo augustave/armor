@@ -2400,6 +2400,31 @@ h3 {
   padding-top: 22px;
 }
 
+/* Attribution line — Concept × DEFENSE.OBSERVER with US flag marker */
+.footer-attribution {
+  align-items: center;
+  display: inline-flex;
+  font-family: var(--mono);
+  gap: 8px;
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+
+.footer-attribution strong {
+  color: var(--bone);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.footer-flag {
+  border: 1px solid rgba(232, 226, 209, 0.18);
+  display: inline-block;
+  flex-shrink: 0;
+  height: 11px;
+  vertical-align: middle;
+  width: 21px;
+}
+
 /* Release record line — surfaces deploy timestamp + commit history link
    so the live state of the dossier is one click from the page footer. */
 .footer-release {

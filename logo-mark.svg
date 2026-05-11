@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ARMOR mark only — no wordmark.
+  Use for favicons, square icon contexts, social card thumbnails,
+  or anywhere the lockup is too wide.
+
+  Mark = same skewed parallelogram + sensor-sweep scan lines as
+  /logo.svg, sized to a tighter viewBox.
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 64 32"
+     role="img"
+     aria-label="ARMOR"
+     preserveAspectRatio="xMidYMid meet">
+  <title>ARMOR</title>
+
+  <g fill="none"
+     stroke="#c9b894"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+    <!-- Body outline (skewed parallelogram) -->
+    <path d="M11 7 L45 7 L39 25 L5 25 Z" stroke-width="1.4"/>
+    <!-- Lower internal scan line -->
+    <line x1="14" y1="16" x2="36" y2="16" stroke-width="1.1"/>
+    <!-- Upper scan line — extends past the right edge as sensor sweep -->
+    <line x1="24" y1="13" x2="58" y2="13" stroke-width="1.1"/>
+  </g>
+</svg>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ARMOR logo — horizontal lockup.
+  Brand mark (skewed parallelogram + sensor-sweep scan lines) + ARMOR wordmark.
+
+  Use:
+    - Embed inline:   <object data="/logo.svg" type="image/svg+xml"></object>
+    - As image:       <img src="/logo.svg" alt="ARMOR">
+    - Background:     background-image: url("/logo.svg");
+
+  Geometry:
+    - Mark: 34×18 box skewed -18° (matches .brand-mark CSS in /styles.css)
+    - Sensor-sweep line extends past the right edge (tactical accent)
+
+  Colors are hardcoded so the SVG renders correctly outside the site:
+    - Mark stroke: #c9b894 (signal)
+    - Wordmark fill: #e8e2d1 (bone)
+
+  Background is transparent — works on dark or light surfaces.
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 200 44"
+     role="img"
+     aria-label="ARMOR"
+     preserveAspectRatio="xMidYMid meet">
+  <title>ARMOR</title>
+  <desc>ARMOR — Maritime Defense UAV / Concept</desc>
+
+  <!-- Brand mark: skewed parallelogram + two internal scan lines -->
+  <g fill="none"
+     stroke="#c9b894"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+    <!-- Body outline (skewX -18° applied to a 34×18 rect) -->
+    <path d="M11 7 L45 7 L39 25 L5 25 Z" stroke-width="1.4"/>
+    <!-- Lower internal scan line -->
+    <line x1="14" y1="16" x2="36" y2="16" stroke-width="1.1"/>
+    <!-- Upper scan line — extends past the right edge as sensor sweep -->
+    <line x1="24" y1="13" x2="58" y2="13" stroke-width="1.1"/>
+  </g>
+
+  <!-- Wordmark (mono, tracked) -->
+  <text x="76"
+        y="22"
+        font-family="'JetBrains Mono', 'SF Mono', 'SFMono-Regular', Menlo, Consolas, monospace"
+        font-size="18"
+        font-weight="700"
+        letter-spacing="2.5"
+        fill="#e8e2d1"
+        dominant-baseline="middle">ARMOR</text>
+</svg>

@@ -118,6 +118,47 @@ const missionGraph = {
   ],
 };
 
+/* Entity glossary — closes State A/C <-> State B vocabulary leak.
+   Each graph node maps to (a) a one-sentence definition the inspector
+   surfaces on selection, and (b) a cross-reference back to where the
+   entity is established in the WSA dossier or doctrine. Without this,
+   the entity graph's vocabulary (Saildrone, Voyager, MDA, Pangas, etc.)
+   exists nowhere else on the site and reads as scenario-internal noise. */
+const ENTITY_GLOSSARY = {
+  DHS:      { definition: "Department of Homeland Security — top-level civil maritime authority overseeing CBP and USCG.",
+              ref: "WSA-01 stakeholder map" },
+  CBP:      { definition: "Customs and Border Protection — operates Air & Marine Operations; primary CONUS partner for surface picket.",
+              ref: "WSA-01 stakeholder map" },
+  USCG:     { definition: "US Coast Guard — primary domestic ARMOR sponsor and watch authority for the picket.",
+              ref: "doctrine §10 Theater Variants (V-USCG)" },
+  SD:       { definition: "Saildrone — vendor of the Voyager-class USV used as the ARMOR concept reference platform.",
+              ref: "WSA-05 §1 (concept commitment to Voyager-class, not Saildrone as sole-source)" },
+  SV:       { definition: "Voyager-class USV — the borrowed reference hull. ARMOR adds sensor mast, compute, and comms; does not redesign the platform.",
+              ref: "WSA-05 §1 baseline; platforms section ARMOR-A" },
+  ML:       { definition: "On-platform behavior classifier and sensor-fusion software stack.",
+              ref: "WSA-04 §3 sensor-fusion contract" },
+  Radar:    { definition: "Surface radar processing and track-formation algorithms — part of the concept-stage sensor kit.",
+              ref: "WSA-05 §2 sensor kit; platforms section (radar)" },
+  CAM:      { definition: "Electro-optical / infrared imaging payload — concept FLIR-class for daylight and thermal classification.",
+              ref: "WSA-05 §2 sensor kit; platforms section (EO/IR)" },
+  MDA:      { definition: "Maritime Domain Awareness — the operational outcome ARMOR's picket is intended to extend (continuous calibrated picture).",
+              ref: "doctrine §2 Purpose" },
+  DT:       { definition: "Drug-traffic activity — pattern-of-life category surfaced through calibrated alerts to the watch floor.",
+              ref: "doctrine §6 Rules of Alerting" },
+  HS:       { definition: "Human smuggling — contact-of-interest behavioral profile carried in each tasking package.",
+              ref: "doctrine §3.2 Tasking" },
+  Pangas:   { definition: "Small fast vessels — primary adversary platform class addressed by SD-2014 reference scenario.",
+              ref: "WSA-02 scenario actors" },
+  Refine:   { definition: "Operator triage decisions (Mark False / Suppress / Escalate / Open track) that feed back into the classifier calibration loop.",
+              ref: "doctrine §7 Operator Workflow" },
+  Range:    { definition: "Detection range — coverage metric per platform; one of the calibration measures gated by DT-05.",
+              ref: "platforms section (sensor specs); WSA-03 simulation evidence" },
+  FalsePos: { definition: "False-positive rate — alert quality measure; calibration burden hard-floor per doctrine §7.",
+              ref: "doctrine §6 calibration; WSA-03 false-positive sweeps" },
+  Picket:   { definition: "Standard 4-platform picket tactic — four ARMOR-A craft holding ARM-1A/2B/3C/4D patrol sites along a named approach lane.",
+              ref: "doctrine §3.1 Continuous Picket; platforms ARMOR-A employment" },
+};
+
 const graphColors = {
   Org: "#ffffff",
   Tech: "#ffffff",
@@ -595,11 +636,30 @@ function selectGraphNode(nodeId) {
     .slice(0, 4)
     .map((edge) => `${edge.source === nodeId ? "to" : "from"} ${edge.source === nodeId ? edge.target : edge.source}: ${edge.label}`)
     .join("; ");
-  setInspector(node.label, relationText || "No direct relationships in the current graph.", [
+
+  // Pull glossary entry — closes State A/C <-> State B vocabulary leak.
+  // Body leads with the definition (so the entity is established before
+  // its in-graph relationships), then lists relationships. Meta carries
+  // the cross-reference back to WSA dossier or doctrine where the entity
+  // is canonically defined.
+  const glossary = ENTITY_GLOSSARY[nodeId];
+  const definition = glossary ? glossary.definition : "Entity defined within the SD-2014 reference scenario only.";
+  const relationsLine = relationText
+    ? `Relationships: ${relationText}.`
+    : "No direct relationships in the current graph.";
+  const body = `${definition} ${relationsLine}`;
+
+  const meta = [
     ["Type", node.type],
     ["Edges", String(relations.length)],
-    ["Mode", appState.mode[0].toUpperCase() + appState.mode.slice(1)],
-  ]);
+  ];
+  if (glossary) {
+    meta.push(["Reference", glossary.ref]);
+  } else {
+    meta.push(["Reference", "Scenario-internal — no canonical source"]);
+  }
+
+  setInspector(node.label, body, meta);
 }
 
 function updateGraphSelection() {

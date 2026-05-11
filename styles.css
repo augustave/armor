@@ -2399,6 +2399,25 @@ h3 {
   padding-top: 22px;
 }
 
+/* Release record line — surfaces deploy timestamp + commit history link
+   so the live state of the dossier is one click from the page footer. */
+.footer-release {
+  font-family: var(--mono);
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+
+.footer-release a {
+  color: var(--signal);
+  text-decoration: underline;
+  text-decoration-color: rgba(201, 184, 148, 0.32);
+  text-underline-offset: 2px;
+}
+
+.footer-release a:hover {
+  text-decoration-color: var(--signal);
+}
+
 @media (max-width: 780px) {
   .footer-inner {
     grid-template-columns: 1fr;
